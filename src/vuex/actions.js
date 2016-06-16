@@ -5,3 +5,7 @@ export function incrementProgress ({ dispatch, state }) {
 export function sendCommand ({dispatch}, command) {
   dispatch('SEND_COMMAND', command)
 }
+
+export function updateTask ({dispatch}, newTask) {
+  dispatch('UPDATE_TASK', newTask)
+}

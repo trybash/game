@@ -9,7 +9,8 @@ const emulator = BashEmulator()
 const state = {
   progress: 0,
   maxProgress: 20,
-  results: []
+  results: [],
+  task: 'There is so much to do!'
 }
 
 const mutations = {
@@ -25,6 +26,10 @@ const mutations = {
       .then(result => {
         state.results.push(result)
       })
+  },
+
+  UPDATE_TASK (state, newTask) {
+    state.task = newTask
   }
 }
 

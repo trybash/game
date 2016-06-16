@@ -9,3 +9,7 @@ export function getMaxProgress (state) {
 export function getHistory (state) {
   return state.results
 }
+
+export function getTask (state) {
+  return state.task
+}
