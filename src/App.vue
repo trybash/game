@@ -11,6 +11,7 @@
 
 <template>
   <div>
+    <tb-terminal></tb-terminal>
     <tb-progress></tb-progress>
 
     <button @click="incrementProgress">Progress +1</button@click>
@@ -18,12 +19,15 @@
 </template>
 
 <script>
+import Terminal from './components/Terminal'
 import Progress from './components/Progress'
+
 import store from './vuex/store'
 import { incrementProgress } from './vuex/actions'
 
 export default {
   components: {
+    'tb-terminal': Terminal,
     'tb-progress': Progress
   },
 
