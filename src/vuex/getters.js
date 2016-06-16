@@ -5,3 +5,7 @@ export function getProgress (state) {
 export function getMaxProgress (state) {
   return state.maxProgress
 }
+
+export function getHistory (state) {
+  return state.results
+}
