@@ -1,5 +1,7 @@
 <style lang="stylus" scoped>
 
+@import '../stylus/colors'
+
 .Progress {
   padding 1em
   background-color #eee
@@ -12,7 +14,7 @@
   }
 
   &-fill {
-    background-color blue
+    background-color green-htw
     color #fff
     z-index 1337
     overflow hidden
