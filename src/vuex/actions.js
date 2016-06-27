@@ -9,3 +9,7 @@ export function sendCommand ({dispatch}, command) {
 export function updateTask ({dispatch}, newTask) {
   dispatch('UPDATE_TASK', newTask)
 }
+
+export function reset ({dispatch}) {
+  dispatch('RESET')
+}

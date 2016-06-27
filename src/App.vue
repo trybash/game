@@ -1,5 +1,7 @@
 <style lang="stylus">
 
+@import './stylus/colors'
+
 * {
   position relative
   margin 0
@@ -7,23 +9,93 @@
   box-sizing border-box
 }
 
+body {
+  background-color #ddd
+  font-family 'Source Sans Pro'
+}
+
 .u-spacer {
   clear both
   margin-bottom 40px
 }
 
+.Container {
+  display flex
+  flex-direction column
+  height 100vh
+}
+
+.Header {
+  display flex
+  flex-direction row
+  
+  margin-bottom 1em
+  
+  padding 1em
+  
+  background-color black
+  
+  &-left,
+  &-right {
+    flex 1
+  }
+}
+
+.Main {
+  flex 1
+  display flex
+  flex-direction column
+  justify-content center
+  
+  padding-left 1em
+  padding-right 1em
+  
+  &-container {
+    display flex
+    flex-direction row
+    width 100%
+  }
+  
+  &-terminal,
+  &-task {
+  }
+  
+  &-terminal {
+    flex 2
+    height 50vh
+  }
+  
+  &-task {
+    flex 1
+  }
+}
+
 </style>
 
 <template>
-  <div>
-    <tb-terminal></tb-terminal>
-    <div class="u-spacer"></div>
+  <div class="Container">
+    <header class="Header">
+      <div class="Header-left"></div>
+      <div class="Header-right">
+        <tb-progress></tb-progress>
+        <tb-button @click="incrementProgress">Progress +1</tb-button>
+        <tb-button color="red" @click="reset">Reset</tb-button>
+      </div>
+    </header>
 
-    <tb-progress></tb-progress>
-    <button @click="incrementProgress">Progress +1</button>
-    <div class="u-spacer"></div>
+    <tb-done></tb-done>
 
-    <tb-task></tb-task>
+    <main class="Main">
+      <div class="Main-container">
+        <div class="Main-terminal">
+          <tb-terminal></tb-terminal>
+        </div>
+        <div class="Main-task">
+          <tb-task></tb-task>
+        </div>
+      </div>
+    </main>
+    
   </div>
 </template>
 
@@ -31,22 +103,34 @@
 import Terminal from './components/Terminal'
 import Progress from './components/Progress'
 import Task from './components/Task'
+import Button from './components/Button'
+import Done from './components/Done'
 
 import store from './vuex/store'
-import { incrementProgress } from './vuex/actions'
+import { getStatus } from './vuex/getters'
+import { incrementProgress, reset } from './vuex/actions'
+
+console.log(process.env.NODE_ENV)
 
 export default {
   components: {
     'tb-terminal': Terminal,
     'tb-progress': Progress,
-    'tb-task': Task
+    'tb-task': Task,
+    'tb-button': Button,
+    'tb-done': Done
   },
 
   store,
 
   vuex: {
     actions: {
-      incrementProgress
+      incrementProgress,
+      reset
+    },
+
+    getters: {
+      status: getStatus
     }
   }
 }

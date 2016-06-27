@@ -3,9 +3,6 @@
 @import '../stylus/colors'
 
 .Progress {
-  padding 1em
-  background-color #eee
-
   &-fill,
   &-text {
     display block
@@ -14,7 +11,7 @@
   }
 
   &-fill {
-    background-color green-htw
+    background-color green
     color #fff
     z-index 1337
     overflow hidden

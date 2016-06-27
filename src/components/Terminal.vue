@@ -3,14 +3,14 @@
 @import '../stylus/colors'
 
 .Terminal {
-  height 400px
+  height 100%
   overflow scroll
 
   padding 1em
 
   background-color grey-dark
 
-  color green
+  color terminal-green
   font-family monospace
 
   .History {
@@ -34,6 +34,18 @@
       content: '$ '
     }
   }
+  
+  .Step {
+    white-space pre-wrap
+    
+    &--error {
+      color terminal-red
+    }
+    
+    &--input {
+      color white
+    }
+  }
 }
 
 </style>
@@ -42,9 +54,11 @@
 <template>
   <div class="Terminal" @click="focusInput" v-el:terminal>
     <div class="History">
-      <div v-for="step in history" track-by="$index">
-        {{step}}
-      </div>
+      <pre v-for="line in output" track-by="$index" class="Step" :class="{
+        'Step--error': line.type === 'ERR',
+        'Step--output': line.type === 'OUTPUT',
+        'Step--input': line.type === 'INPUT'
+      }">{{line.text}}</pre>
     </div>
     <form @submit="submit">
       <input class="Input" v-model="command" v-el:input>
@@ -54,7 +68,7 @@
 
 
 <script>
-import { getHistory } from '../vuex/getters'
+import { getOutput, getHistory } from '../vuex/getters'
 import { sendCommand } from '../vuex/actions'
 
 module.exports = {
@@ -64,6 +78,7 @@ module.exports = {
 
   vuex: {
     getters: {
+      output: getOutput,
       history: getHistory
     },
 
