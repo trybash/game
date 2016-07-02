@@ -1,3 +1,18 @@
+<style lang="stylus">
+  .Done {
+    padding 1em
+    max-width 50vw
+    border-radius 3px
+    background-color white
+    box-shadow 0 5px 20px rgba(black, 0.1)
+    transform translateY(-100vw)
+    
+    &.is-active {
+      transform translateY(0)
+    }
+  }
+</style>
+
 <template>
   <div class="Done" :class="{
     'is-active': status

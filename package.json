@@ -16,6 +16,7 @@
     "babel-runtime": "^6.0.0",
     "bash-emulator": "trybash/bash-emulator#gh-pages",
     "vue": "^1.0.21",
+    "vue-resource": "^0.9.1",
     "vuex": "^0.6.3"
   },
   "devDependencies": {
@@ -28,6 +29,7 @@
     "chromedriver": "^2.21.2",
     "compression-webpack-plugin": "^0.3.1",
     "connect-history-api-fallback": "^1.1.0",
+    "copy-webpack-plugin": "^3.0.1",
     "cross-spawn": "^2.1.5",
     "css-loader": "^0.23.0",
     "eslint": "^2.10.2",

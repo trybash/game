@@ -19,5 +19,5 @@ export function getHistory (state) {
 }
 
 export function getStatus (state) {
-  return 'SOLVED'
+  return 'UNSOLVED'
 }

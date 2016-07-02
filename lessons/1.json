@@ -1,0 +1,22 @@
+{
+	"title": "Let's get right into it",
+	"parts": [{
+		"note": "Before we can do anything useful within the command line, we have to get comfortable moving around the file system.",
+		"emulator": {
+			"workingDirectory": "/home/test",
+			"fileSystem": {
+				"task_1": {
+					"type": "file",
+					"content": "read this first"
+				}
+			}
+		},
+		"goal": {
+			"type": "command entered",
+			"content": "ls"
+		}
+	}, {
+		"reset": false,
+		"note": "A less abstract example, would be to think of the file system kind of like a library."
+	}]
+}

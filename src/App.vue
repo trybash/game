@@ -100,17 +100,25 @@ body {
 </template>
 
 <script>
-import Terminal from './components/Terminal'
-import Progress from './components/Progress'
-import Task from './components/Task'
-import Button from './components/Button'
-import Done from './components/Done'
+import Terminal from 'components/Terminal'
+import Progress from 'components/Progress'
+import Task from 'components/Task'
+import Button from 'components/Button'
+import Done from 'components/Done'
 
 import store from './vuex/store'
 import { getStatus } from './vuex/getters'
 import { incrementProgress, reset } from './vuex/actions'
 
 console.log(process.env.NODE_ENV)
+
+if (process.env.NODE_ENV === 'development') {
+  window.mock = {
+    toggle () {
+      store
+    }
+  }
+}
 
 export default {
   components: {

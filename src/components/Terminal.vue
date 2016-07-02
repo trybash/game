@@ -42,6 +42,10 @@
       color terminal-red
     }
     
+    &--instruction {
+      color white
+    }
+    
     &--input {
       color white
     }
@@ -57,7 +61,8 @@
       <pre v-for="line in output" track-by="$index" class="Step" :class="{
         'Step--error': line.type === 'ERR',
         'Step--output': line.type === 'OUTPUT',
-        'Step--input': line.type === 'INPUT'
+        'Step--input': line.type === 'INPUT',
+        'Step--instruction': line.type === 'INSTRUCTION'
       }">{{line.text}}</pre>
     </div>
     <form @submit="submit">
