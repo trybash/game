@@ -42,12 +42,12 @@
   <div class="Progress-bar">
     <div class="Progress-fill" :style="{ width: fillWidth }">
       <div class="Progress-fillPadding">
-        {{ progress }} / {{ maxProgress }}
+        {{ current }} / {{ max }}
       </div>
     </div>
 
     <div class="Progress-text">
-      {{ progress }} / {{ maxProgress }}
+      {{ current }} / {{ max }}
     </div>
   </div>
 </div>
@@ -56,19 +56,12 @@
 
 
 <script>
-import { getProgress, getMaxProgress } from '../vuex/getters'
-
 export default {
-  vuex: {
-    getters: {
-      progress: getProgress,
-      maxProgress: getMaxProgress
-    }
-  },
+  props: ['current', 'max'],
 
   computed: {
     fillWidth () {
-      return (this.progress * 100 / this.maxProgress) + '%'
+      return (this.current * 100 / this.max) + '%'
     }
   }
 }

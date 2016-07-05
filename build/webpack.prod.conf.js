@@ -4,7 +4,6 @@ var utils = require('./utils')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var env = process.env.NODE_ENV === 'testing'
@@ -28,9 +27,6 @@ var webpackConfig = merge(baseWebpackConfig, {
     })
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {from: 'lessons', to: 'lessons'}
-    ]),
     // http://vuejs.github.io/vue-loader/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env

@@ -17,6 +17,20 @@
 
   }
 
+  .Form {
+    display flex
+
+    .Sign {
+      flex-grow 0
+      flex-shrink 0
+      color terminal-green
+    }
+
+    .InputWrapper {
+      flex 1
+    }
+  }
+
   .Input {
     display block
     width 100%
@@ -29,23 +43,20 @@
     color inherit
     font-family inherit
     font-size 1em
-
-    &:before {
-      content: '$ '
-    }
   }
-  
+
   .Step {
+    line-height 1.3em
     white-space pre-wrap
-    
+
     &--error {
       color terminal-red
     }
-    
+
     &--instruction {
       color white
     }
-    
+
     &--input {
       color white
     }
@@ -63,10 +74,13 @@
         'Step--output': line.type === 'OUTPUT',
         'Step--input': line.type === 'INPUT',
         'Step--instruction': line.type === 'INSTRUCTION'
-      }">{{line.text}}</pre>
+      }">{{line.type === 'INPUT' ? '$ ' : '' }}{{line.text}}</pre>
     </div>
-    <form @submit="submit">
-      <input class="Input" v-model="command" v-el:input>
+    <form class="Form" @submit="submit">
+      <div class="Sign">$&nbsp;</div>
+      <div class="InputWrapper">
+        <input class="Input" v-model="command" v-el:input>
+      </div>
     </form>
   </div>
 </template>
@@ -93,9 +107,13 @@ module.exports = {
   },
 
   watch: {
-    history () {
+    output () {
       this.$els.terminal.scrollTop = this.$els.terminal.scrollHeight
     }
+  },
+
+  ready () {
+    this.$els.terminal.scrollTop = this.$els.terminal.scrollHeight
   },
 
   methods: {

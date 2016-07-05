@@ -7,57 +7,45 @@ import BashEmulator from 'bash-emulator'
 Vue.use(Vuex)
 Vue.use(VueResource)
 
-import { incrementProgress } from './actions'
+// import { incrementProgress } from './actions'
 
-Vue.http.get('/lessons/1.json').then((response) => {
-  console.log(response.json())
-  incrementProgress(store)
-}, (response) => {
-  // error callback
-})
+const vuexState = JSON.parse(window.localStorage.state || '{}')
 
-const emulator = BashEmulator({
-  history: ['ls'],
-  workingDirectory: '/home/test',
-  fileSystem: {
-    '/': {
-      type: 'dir',
-      lastEdited: Date.now()
-    },
-    '/home': {
-      type: 'dir',
-      lastEdited: Date.now()
-    },
-    '/home/test': {
-      type: 'dir',
-      lastEdited: Date.now()
-    },
-    '/home/test/1.txt': {
-      type: 'file',
-      content: `Before we can do anything useful within the command line, we have to get comfortable moving around the file system.
+const emulator = window.emulator = BashEmulator(vuexState.emulator)
 
-The file system exists on any computer system, and can be thought of as having a tree structure, with leaves attached to each branch, cascading upwards (or downwards) from the root.
+emulator.commands.clear = function (env, args) {
+  const $0 = document.getElementsByClassName('Step')[0]
+  const lineHeight = parseFloat(window.getComputedStyle($0)['line-height'], 10)
+  const $terminal = document.getElementsByClassName('Terminal')[0]
+  const height = parseFloat($terminal.offsetHeight)
+  const numberOfLines = parseInt(height / lineHeight)
+  env.output(new Array(numberOfLines).join('\n'))
+  env.exit()
+}
 
-A less abstract example, would be to think of the file system kind of like a library.
-
-If you can imagine each page of a book as a file, then, each book, it's container, would be a folder -- or more specifically, a directory. Each book is organized in a particular location on their respective shelves, and would also function as a directory.
-
-To illustrate how this would work, we will imagine we want to access page 5 from Moby Dick. We have to find it's shelf, it's location on the shelf, and turn to page 5. This could be visualized as such.`
-    }
-  }
-})
+const lessons = require('../../lessons')
 
 const initialState = {
-  progress: 0,
-  maxProgress: 20,
-  output: [{
-    type: 'INSTRUCTION',
-    text: 'Hi!'}],
-  task: 'Before we can do anything useful within the command line, we have to get comfortable moving around the file system. The file system exists on any computer system, and can be thought of as having a tree structure, with leaves attached to each branch, cascading upwards (or downwards) from the root.',
-  history: emulator.state.history
+  currentLesson: 1,
+  currentSection: 1,
+  lessons: lessons,
+  completedLessons: [],
+  output: [],
+  emulator: lessons[0].sections[0].emulator
 }
 
 const mutations = {
+  START_SECTION (state, lessonNumber, sectionNumber) {
+    console.log(`start lesson ${lessonNumber} and section ${sectionNumber}`)
+    state.currentLesson = lessonNumber
+    state.currentSection = sectionNumber
+
+    console.log(state)
+
+    Object.assign(emulator.state, state.lessons[state.currentLesson - 1].sections[state.currentSection - 1].emulator)
+    state.emulator = emulator.state
+  },
+
   INCREMENT_PROGRESS (state, amount) {
     state.progress = state.progress + amount
   },
@@ -72,8 +60,18 @@ const mutations = {
       }, err => {
         state.output.push({type: 'ERR', text: err})
       })
+      .then()
       .then(() => {
-        state.history = emulator.state.history
+        window.localStorage.state = JSON.stringify(_.pick(state, [
+          'currentLesson',
+          'currentSection',
+          'completedLessons',
+          'output',
+          'emulator'
+        ]))
+      })
+      .then(() => {
+        state.emulator = emulator.state
       })
   },
 
@@ -89,7 +87,7 @@ const mutations = {
 }
 
 const store = new Vuex.Store({
-  state: _.cloneDeep(initialState),
+  state: Object.assign({}, initialState, vuexState),
   mutations
 })
 

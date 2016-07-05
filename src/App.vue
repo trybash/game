@@ -28,13 +28,13 @@ body {
 .Header {
   display flex
   flex-direction row
-  
+
   margin-bottom 1em
-  
+
   padding 1em
-  
+
   background-color black
-  
+
   &-left,
   &-right {
     flex 1
@@ -46,25 +46,25 @@ body {
   display flex
   flex-direction column
   justify-content center
-  
+
   padding-left 1em
   padding-right 1em
-  
+
   &-container {
     display flex
     flex-direction row
     width 100%
   }
-  
+
   &-terminal,
   &-task {
   }
-  
+
   &-terminal {
     flex 2
     height 50vh
   }
-  
+
   &-task {
     flex 1
   }
@@ -77,8 +77,9 @@ body {
     <header class="Header">
       <div class="Header-left"></div>
       <div class="Header-right">
-        <tb-progress></tb-progress>
-        <tb-button @click="incrementProgress">Progress +1</tb-button>
+        <tb-progress :current="currentSection" :max="maxSection"></tb-progress>
+        <tb-progress :current="currentLesson" :max="maxLesson"></tb-progress>
+        <!-- <tb-button @click="incrementProgress">Progress +1</tb-button> -->
         <tb-button color="red" @click="reset">Reset</tb-button>
       </div>
     </header>
@@ -95,7 +96,7 @@ body {
         </div>
       </div>
     </main>
-    
+
   </div>
 </template>
 
@@ -107,7 +108,7 @@ import Button from 'components/Button'
 import Done from 'components/Done'
 
 import store from './vuex/store'
-import { getStatus } from './vuex/getters'
+import { getStatus, getCompletedSectionCount, getSectionLength, getCompletedCount, getLessonCount } from './vuex/getters'
 import { incrementProgress, reset } from './vuex/actions'
 
 console.log(process.env.NODE_ENV)
@@ -138,7 +139,11 @@ export default {
     },
 
     getters: {
-      status: getStatus
+      status: getStatus,
+      currentSection: getCompletedSectionCount,
+      maxSection: getSectionLength,
+      currentLesson: getCompletedCount,
+      maxLesson: getLessonCount
     }
   }
 }
