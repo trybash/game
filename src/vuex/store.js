@@ -23,7 +23,7 @@ emulator.commands.clear = function (env, args) {
   env.exit()
 }
 
-const lessons = require('../../lessons')
+const lessons = require('../lessons')
 
 const initialState = {
   currentLesson: 1,
