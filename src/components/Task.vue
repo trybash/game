@@ -9,7 +9,7 @@
 
 <template>
   <div class="Task">
-    <h3 class="Headline">Current Task:</h3>
+    <h3 class="Headline">Current Task</h3>
     <div class="Text">{{task}}</div>
   </div>
 </template>
