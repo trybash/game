@@ -1,6 +1,9 @@
 # try-bash
 
-> Learn Bash the easy way 
+[![Build Status](https://travis-ci.org/trybash/game.svg?branch=master)](https://travis-ci.org/trybash/game)
+
+
+> Learn Bash the easy way
 
 ## Build Setup
 
