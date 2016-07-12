@@ -108,12 +108,12 @@ module.exports = {
 
   watch: {
     output () {
-      this.$els.terminal.scrollTop = this.$els.terminal.scrollHeight
+      this.methods.scrollBottom()
     }
   },
 
   ready () {
-    this.$els.terminal.scrollTop = this.$els.terminal.scrollHeight
+    this.methods.scrollBottom()
   },
 
   methods: {
@@ -121,6 +121,10 @@ module.exports = {
       event.preventDefault()
       this.sendCommand(this.command)
       this.command = ''
+    },
+
+    scrollBottom () {
+      this.$els.terminal.scrollTop = this.$els.terminal.scrollHeight
     },
 
     focusInput () {

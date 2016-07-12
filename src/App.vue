@@ -111,16 +111,6 @@ import store from './vuex/store'
 import { getStatus, getCompletedSectionCount, getSectionLength, getCompletedCount, getLessonCount } from './vuex/getters'
 import { incrementProgress, reset } from './vuex/actions'
 
-console.log(process.env.NODE_ENV)
-
-if (process.env.NODE_ENV === 'development') {
-  window.mock = {
-    toggle () {
-      store
-    }
-  }
-}
-
 export default {
   components: {
     'tb-terminal': Terminal,

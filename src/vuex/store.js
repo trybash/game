@@ -3,25 +3,16 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VueResource from 'vue-resource'
 import BashEmulator from 'bash-emulator'
+import * as utils from 'src/utils'
 
 Vue.use(Vuex)
 Vue.use(VueResource)
-
-// import { incrementProgress } from './actions'
 
 const vuexState = JSON.parse(window.localStorage.state || '{}')
 
 const emulator = window.emulator = BashEmulator(vuexState.emulator)
 
-emulator.commands.clear = function (env, args) {
-  const $0 = document.getElementsByClassName('Step')[0]
-  const lineHeight = parseFloat(window.getComputedStyle($0)['line-height'], 10)
-  const $terminal = document.getElementsByClassName('Terminal')[0]
-  const height = parseFloat($terminal.offsetHeight)
-  const numberOfLines = parseInt(height / lineHeight)
-  env.output(new Array(numberOfLines).join('\n'))
-  env.exit()
-}
+emulator.commands.clear = utils.clear
 
 const lessons = require('../lessons')
 
