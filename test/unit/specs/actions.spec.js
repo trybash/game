@@ -10,15 +10,6 @@ describe('actions', () => {
     })
   })
 
-  describe('updateTask', () => {
-    it('should dispatch new task', () => {
-      const dispatch = sinon.spy()
-      actions.updateTask({ dispatch }, 'New Task')
-      expect(dispatch.calledOnce).to.be.true
-      expect(dispatch.calledWith('UPDATE_TASK', 'New Task')).to.be.true
-    })
-  })
-
   describe('reset', () => {
     it('should dispatch reset', () => {
       const dispatch = sinon.spy()

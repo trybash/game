@@ -48,10 +48,6 @@ const mutations = {
     state.emulator = emulator.state
   },
 
-  INCREMENT_PROGRESS (state, amount) {
-    state.progress = state.progress + amount
-  },
-
   SEND_COMMAND (state, command) {
     state.output.push({type: 'INPUT', text: command})
 
