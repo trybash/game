@@ -108,12 +108,12 @@ module.exports = {
 
   watch: {
     output () {
-      this.methods.scrollBottom()
+      this.scrollBottom()
     }
   },
 
   ready () {
-    this.methods.scrollBottom()
+    this.scrollBottom()
   },
 
   methods: {
