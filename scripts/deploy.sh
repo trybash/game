@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+# This script can also be used locally to deploy to gh-pages
+
+echo "Remove old dist/ directory"
+rm -rf dist
 echo "Clone gh-pages branch"
 git clone -b gh-pages --single-branch git@github.com:trybash/game.git dist
 echo Build into gh-pages branch
