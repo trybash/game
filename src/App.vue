@@ -12,6 +12,12 @@
 body {
   background-color #ddd
   font-family 'Source Sans Pro'
+
+  &.yolo {
+    transition-property: transform;
+    transition-duration: 1s;
+    transform: rotate(360deg);
+  }
 }
 
 .u-spacer {

@@ -7,5 +7,12 @@ module.exports = {
     const numberOfLines = parseInt(height / lineHeight)
     env.output(new Array(numberOfLines).join('\n'))
     env.exit()
+  },
+
+  yolo (env, args) {
+    document.getElementsByTagName('body')[0].className = 'yolo'
+    setTimeout(function () {
+      document.getElementsByTagName('body')[0].className = ''
+    }, 1000)
   }
 }

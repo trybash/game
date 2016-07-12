@@ -13,6 +13,7 @@ const vuexState = JSON.parse(window.localStorage.state || '{}')
 const emulator = window.emulator = BashEmulator(vuexState.emulator)
 
 emulator.commands.clear = utils.clear
+emulator.commands.yolo = utils.yolo
 
 const lessons = require('../lessons')
 
