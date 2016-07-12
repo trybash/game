@@ -69,7 +69,15 @@ module.exports = function (config) {
       reporters: [
         { type: 'lcov', subdir: '.' },
         { type: 'text-summary' }
-      ]
+      ],
+      check: {
+        global: {
+          statements: 80,
+          branches: 100,
+          excludes: [
+          ]
+        }
+      }
     }
   })
 }
