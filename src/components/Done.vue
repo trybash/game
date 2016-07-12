@@ -24,7 +24,7 @@
     'is-active': solved
   }">
     <div>Fertig!</div>
-    <tb-button @click="nextSection">Nächstes Level!</tb-button>
+    <tb-button @click="nextSection">Nächster Abschnitt →</tb-button>
   </div>
 </template>
 
