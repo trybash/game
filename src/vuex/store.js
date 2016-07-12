@@ -8,6 +8,16 @@ import * as utils from 'src/utils'
 Vue.use(Vuex)
 Vue.use(VueResource)
 
+function saveLocalStorage (state) {
+  window.localStorage.state = JSON.stringify(_.pick(state, [
+    'currentLesson',
+    'currentSection',
+    'completedLessons',
+    'output',
+    'emulator'
+  ]))
+}
+
 const vuexState = JSON.parse(window.localStorage.state || '{}')
 
 const emulator = window.emulator = BashEmulator(vuexState.emulator)
@@ -52,16 +62,7 @@ const mutations = {
       }, err => {
         state.output.push({type: 'ERR', text: err})
       })
-      .then()
-      .then(() => {
-        window.localStorage.state = JSON.stringify(_.pick(state, [
-          'currentLesson',
-          'currentSection',
-          'completedLessons',
-          'output',
-          'emulator'
-        ]))
-      })
+      .then(() => { saveLocalStorage(state) })
       .then(() => {
         state.emulator = emulator.state
       })
@@ -75,6 +76,7 @@ const mutations = {
     _.forIn(_.cloneDeep(initialState), (value, key) => {
       state[key] = value
     })
+    saveLocalStorage(state)
   }
 }
 
