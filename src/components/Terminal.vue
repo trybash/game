@@ -119,6 +119,7 @@ module.exports = {
   methods: {
     submit (event) {
       event.preventDefault()
+      if (!this.command.length) return
       this.sendCommand(this.command)
       this.command = ''
     },
