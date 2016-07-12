@@ -4,6 +4,6 @@ node_js:
 sudo: false # Allows Travis to run this project in container
 deploy:
   provider: script
-  script: scripts/deploy.sh
+  script: scripts/deploy-travis.sh
   on:
     branch: master
