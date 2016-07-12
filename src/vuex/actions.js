@@ -10,11 +10,6 @@ export function reset ({dispatch}) {
   dispatch('RESET')
 }
 
-export function nextSection (state) {
-  // normal
-  // letzte section
-  // letzte übung
-  const lessonNumber = 1
-  const sectionNumber = 2
-  state.dispatch('START_SECTION', lessonNumber, sectionNumber)
+export function nextSection ({dispatch, state}) {
+  dispatch('START_SECTION', state.currentLesson, state.currentSection + 1)
 }

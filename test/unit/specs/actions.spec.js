@@ -27,4 +27,17 @@ describe('actions', () => {
       expect(dispatch.calledWith('RESET')).to.be.true
     })
   })
+
+  describe('nextSection', () => {
+    it('should start next section', () => {
+      const dispatch = sinon.spy()
+      const state = {
+        currentLesson: 0,
+        currentSection: 1
+      }
+      actions.nextSection({dispatch, state})
+      expect(dispatch.calledOnce).to.be.true
+      expect(dispatch.calledWith('START_SECTION', 0, 2))
+    })
+  })
 })
