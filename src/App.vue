@@ -79,7 +79,6 @@ body {
       <div class="Header-right">
         <tb-progress :current="currentSection" :max="maxSection"></tb-progress>
         <tb-progress :current="currentLesson" :max="maxLesson"></tb-progress>
-        <!-- <tb-button @click="incrementProgress">Progress +1</tb-button> -->
         <tb-button color="red" @click="reset">Reset</tb-button>
       </div>
     </header>
@@ -108,8 +107,8 @@ import Button from 'components/Button'
 import Done from 'components/Done'
 
 import store from './vuex/store'
-import { getStatus, getCompletedSectionCount, getSectionLength, getCompletedCount, getLessonCount } from './vuex/getters'
-import { incrementProgress, reset } from './vuex/actions'
+import { getCompletedSectionCount, getSectionLength, getCompletedCount, getLessonCount } from './vuex/getters'
+import { reset } from './vuex/actions'
 
 export default {
   components: {
@@ -124,12 +123,10 @@ export default {
 
   vuex: {
     actions: {
-      incrementProgress,
       reset
     },
 
     getters: {
-      status: getStatus,
       currentSection: getCompletedSectionCount,
       maxSection: getSectionLength,
       currentLesson: getCompletedCount,
