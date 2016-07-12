@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import VueResource from 'vue-resource'
 import BashEmulator from 'bash-emulator'
 import * as utils from 'src/utils'
+import * as getters from 'src/vuex/getters'
 
 Vue.use(Vuex)
 Vue.use(VueResource)
@@ -13,6 +14,7 @@ function saveLocalStorage (state) {
     'currentLesson',
     'currentSection',
     'completedLessons',
+    'solvedCurrentSection',
     'output',
     'emulator'
   ]))
@@ -30,6 +32,7 @@ const lessons = require('../lessons')
 const initialState = {
   currentLesson: 1,
   currentSection: 1,
+  solvedCurrentSection: false,
   lessons: lessons,
   completedLessons: [],
   output: [],
@@ -39,10 +42,9 @@ const initialState = {
 const mutations = {
   START_SECTION (state, lessonNumber, sectionNumber) {
     console.log(`start lesson ${lessonNumber} and section ${sectionNumber}`)
+    state.solvedCurrentSection = false
     state.currentLesson = lessonNumber
     state.currentSection = sectionNumber
-
-    console.log(state)
 
     Object.assign(emulator.state, state.lessons[state.currentLesson - 1].sections[state.currentSection - 1].emulator)
     state.emulator = emulator.state
@@ -58,9 +60,10 @@ const mutations = {
       }, err => {
         state.output.push({type: 'ERR', text: err})
       })
-      .then(() => { saveLocalStorage(state) })
       .then(() => {
         state.emulator = emulator.state
+        state.solvedCurrentSection = getters.getSolved(state)
+        saveLocalStorage(state)
       })
   },
 

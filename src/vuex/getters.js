@@ -37,5 +37,5 @@ export function getHistory (state) {
 }
 
 export function getSolved (state) {
-  return getSection(state).checkSolved(state)
+  return getSection(state).checkSolved(state) || state.solvedCurrentSection
 }
