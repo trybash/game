@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+set -e
 
 # This script can also be used locally to deploy to gh-pages
 
