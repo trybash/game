@@ -3,16 +3,19 @@
 [![Build Status](https://travis-ci.org/trybash/game.svg?branch=master)](https://travis-ci.org/trybash/game)
 
 
-> > Learn Bash the easy way
+> Learn Bash the easy way
 
 This is the source code for the browser-based TryBash game.
+
 [Have a look at the homepage](https://trybash.github.io/) to learn more about bash.
 
 
 ## Overview
 
 The whole game is a web-app running on a single page.
+
 We use [vue.js](http://vuejs.org/) to structure the application and the setup is based on the [vue webpack template](https://vuejs-templates.github.io/webpack/).
+
 For the terminal we created a standalone [bash emulator](https://trybash.github.io/bash-emulator/) in plain Javascript as a separate project.
 
 
