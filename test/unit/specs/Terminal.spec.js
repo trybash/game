@@ -1,6 +1,40 @@
 import Terminal from 'src/components/Terminal'
 
 describe('Terminal.vue', () => {
+  describe('initial data', () => {
+    it('should return an object', () => {
+      const result = Terminal.data()
+      expect(result).to.deep.equal({command: ''})
+    })
+  })
+
+  describe('scrollBottom', () => {
+    it('should be called by watch.output and ready', () => {
+      const scrollBottom = sinon.spy()
+      Terminal.watch.output.call({scrollBottom})
+      Terminal.ready.call({scrollBottom})
+      expect(scrollBottom.calledTwice).to.be.true
+    })
+
+    it('should set scrollTop to scrollHeight', () => {
+      let state = {$els: {terminal: {
+        scrollTop: 0, scrollHeight: 100
+      }}}
+
+      Terminal.methods.scrollBottom.call(state)
+      expect(state.$els.terminal.scrollTop).to.equal(100)
+      expect(state.$els.terminal.scrollHeight).to.equal(100)
+    })
+  })
+
+  describe('focusInput', () => {
+    it('should focus the input element', () => {
+      const focus = sinon.spy()
+      Terminal.methods.focusInput.call({$els: {input: {focus}}})
+      expect(focus.calledOnce).to.be.true
+    })
+  })
+
   describe('submit()', () => {
     it('works', () => {
       const sendCommandSpy = sinon.spy()
