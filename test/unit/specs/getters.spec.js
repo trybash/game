@@ -86,5 +86,24 @@ describe('getters', () => {
       const result = getters.getSolved(state)
       expect(result).to.equal(true)
     })
+
+    it('should return if the current section has ever been solved', () => {
+      const state = {
+        lessons: [
+          {title: 'Title 0'},
+          {title: 'Title 1', sections: [
+            {task: 'Section 1'},
+            {task: 'Section 2', checkSolved () { return false }},
+            {task: 'Section 3'}
+          ]}
+        ],
+        currentSection: 2,
+        currentLesson: 2,
+        completedLessons: [1, 2],
+        solvedCurrentSection: true
+      }
+      const result = getters.getSolved(state)
+      expect(result).to.equal(true)
+    })
   })
 })
