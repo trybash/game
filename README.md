@@ -43,7 +43,7 @@ npm run e2e
 npm test
 
 # lint javascript
-npm run lin
+npm run lint
 
 # publish the latest version to gh-pages
 scripts/deploy.sh
