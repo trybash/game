@@ -4,6 +4,7 @@
   .Task {
     padding 1em
     background-color yellow
+    white-space pre-wrap
   }
 </style>
 
