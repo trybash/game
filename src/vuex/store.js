@@ -46,6 +46,8 @@ const mutations = {
     state.currentLesson = lessonNumber
     state.currentSection = sectionNumber
 
+    saveLocalStorage(state)
+
     Object.assign(emulator.state, state.lessons[state.currentLesson - 1].sections[state.currentSection - 1].emulator)
     state.emulator = emulator.state
   },
