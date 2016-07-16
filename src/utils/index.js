@@ -21,8 +21,8 @@ module.exports = {
   screenShake () {
     const body = document.getElementsByTagName('body')[0]
     body.className = 'shake'
-    const x = _.random(-20, 20)
-    const y = _.random(-20, 20)
+    const x = _.random(-10, 10)
+    const y = _.random(-10, 10)
     body.style.transform = `translate(${x}px, ${y}px)`
 
     setTimeout(function () {

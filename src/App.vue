@@ -76,10 +76,12 @@ body {
   &-terminal {
     flex 2
     height 100%
+    padding-right 0.5em
   }
 
   &-task {
     flex 1
+    padding-left 0.5em
   }
 }
 

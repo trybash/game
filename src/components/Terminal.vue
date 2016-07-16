@@ -30,7 +30,15 @@
   }
 
   &-buttons {
+    display flex
     padding-top 1em
+  }
+
+  &-floppy {
+    flex 1
+    background-image url('../assets/floppy.svg')
+    background-repeat no-repeat
+    background-position 3em center
   }
 
   .History {
@@ -109,6 +117,7 @@
 
       <div class="Terminal-buttons">
         <tb-button color="grey" :turbo="turbo" @click="toggleTurbo">Turbo</tb-button>
+        <div class="Terminal-floppy"></div>
         <tb-button>Level Selection</tb-button>
       </div>
     </div>
