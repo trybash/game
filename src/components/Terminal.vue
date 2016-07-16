@@ -87,9 +87,9 @@
 
 
 <template>
-  <div class="Terminal" @click="focusInput" v-el:terminal>
+  <div class="Terminal" @click="focusInput">
     <div class="Terminal-front">
-      <div class="Terminal-screen">
+      <div class="Terminal-screen" v-el:terminal>
         <div class="History">
           <pre v-for="line in output" track-by="$index" class="Step" :class="{
             'Step--error': line.type === 'ERR',
@@ -117,10 +117,10 @@
 
 
 <script>
-import _ from 'lodash'
 import Button from 'components/Button'
 import { getOutput, getHistory, getTurbo } from '../vuex/getters'
 import { sendCommand, toggleTurbo } from '../vuex/actions'
+import { screenShake } from '../utils'
 
 module.exports = {
   data: () => {
@@ -170,21 +170,12 @@ module.exports = {
       this.$els.input.focus()
     },
 
+    screenShake,
+
     keydown () {
       if (this.turbo) {
-        const body = document.getElementsByTagName('body')[0]
-        body.className = 'shake'
-        const x = _.random(-20, 20)
-        const y = _.random(-20, 20)
-        body.style.transform = `translate(${x}px, ${y}px)`
-
-        setTimeout(function () {
-          document.getElementsByTagName('body')[0].className = ''
-          body.style.transform = 'translate(0px, 0px)'
-        }, 50)
-        console.log('turbo turbo turbo')
+        this.screenShake()
       }
-      console.log('key down')
     }
   }
 }

@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 module.exports = {
   clear (env, args) {
     const $0 = document.getElementsByClassName('Step')[0]
@@ -14,5 +16,18 @@ module.exports = {
     setTimeout(function () {
       document.getElementsByTagName('body')[0].className = ''
     }, 1000)
+  },
+
+  screenShake () {
+    const body = document.getElementsByTagName('body')[0]
+    body.className = 'shake'
+    const x = _.random(-20, 20)
+    const y = _.random(-20, 20)
+    body.style.transform = `translate(${x}px, ${y}px)`
+
+    setTimeout(function () {
+      document.getElementsByTagName('body')[0].className = ''
+      body.style.transform = ''
+    }, 50)
   }
 }

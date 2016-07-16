@@ -35,6 +35,20 @@ describe('Terminal.vue', () => {
     })
   })
 
+  describe('keydown', () => {
+    it('should call screenshake if turbo is true', () => {
+      const screenShake = sinon.spy()
+      Terminal.methods.keydown.call({turbo: true, screenShake})
+      expect(screenShake.calledOnce).to.be.true
+    })
+
+    it('should not call screenshake if turbo is false', () => {
+      const screenShake = sinon.spy()
+      Terminal.methods.keydown.call({turbo: false, screenShake})
+      expect(screenShake.calledOnce).to.be.true
+    })
+  })
+
   describe('submit()', () => {
     it('works', () => {
       const sendCommandSpy = sinon.spy()

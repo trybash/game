@@ -31,4 +31,14 @@ describe('actions', () => {
       expect(dispatch.calledWith('START_SECTION', 0, 2))
     })
   })
+
+  describe('toggleTurbo', () => {
+    it('should toggle the turbo', () => {
+      const dispatch = sinon.spy()
+      const state = { turbo: false }
+      actions.toggleTurbo({dispatch, state})
+      expect(dispatch.calledOnce).to.be.true
+      expect(dispatch.calledWith('TOGGLE_TURBO'))
+    })
+  })
 })

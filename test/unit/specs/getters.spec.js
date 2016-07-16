@@ -9,6 +9,7 @@ const state = {
       {task: 'Section 3'}
     ]}
   ],
+  turbo: true,
   currentSection: 2,
   currentLesson: 2,
   completedLessons: [1, 2]
@@ -78,6 +79,13 @@ describe('getters', () => {
     it('should return the history', () => {
       const result = getters.getHistory(state)
       expect(result).to.equal()
+    })
+  })
+
+  describe('getTurbo', () => {
+    it('should return the turbo', () => {
+      const result = getters.getTurbo(state)
+      expect(result).to.equal(true)
     })
   })
 
