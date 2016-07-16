@@ -36,6 +36,7 @@ const initialState = {
   lessons: lessons,
   completedLessons: [],
   output: [],
+  turbo: false,
   emulator: lessons[0].sections[0].emulator
 }
 
@@ -78,6 +79,10 @@ const mutations = {
       state[key] = value
     })
     saveLocalStorage(state)
+  },
+
+  TOGGLE_TURBO (state) {
+    state.turbo = !state.turbo
   }
 }
 

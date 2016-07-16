@@ -39,3 +39,7 @@ export function getHistory (state) {
 export function getSolved (state) {
   return getSection(state).checkSolved(state) || state.solvedCurrentSection
 }
+
+export function getTurbo (state) {
+  return state.turbo
+}

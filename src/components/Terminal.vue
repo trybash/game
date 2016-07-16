@@ -4,14 +4,34 @@
 
 .Terminal {
   height 100%
-  overflow scroll
-
-  padding 1em
-
-  background-color grey-dark
-
+  padding-bottom 10vh
+  border-radius 10px
+  background-color #ddd
   color terminal-green
-  font-family monospace
+
+  &-front {
+    display flex
+    height 100%
+    flex-direction column
+    padding 1.5em
+    border-radius 10px
+    background-color white
+  }
+
+  &-screen {
+    flex 1
+    height 100%
+    overflow scroll
+    padding 1em
+    box-shadow inset 0.5em 0.5em 0 rgba(black, 0.3)
+    border-radius 3px
+    background-color grey-dark
+    font-family monospace
+  }
+
+  &-buttons {
+    padding-top 1em
+  }
 
   .History {
 
@@ -68,27 +88,39 @@
 
 <template>
   <div class="Terminal" @click="focusInput" v-el:terminal>
-    <div class="History">
-      <pre v-for="line in output" track-by="$index" class="Step" :class="{
-        'Step--error': line.type === 'ERR',
-        'Step--output': line.type === 'OUTPUT',
-        'Step--input': line.type === 'INPUT',
-        'Step--instruction': line.type === 'INSTRUCTION'
-      }">{{line.type === 'INPUT' ? '$ ' : '' }}{{line.text}}</pre>
-    </div>
-    <form class="Form" @submit="submit">
-      <div class="Sign">$&nbsp;</div>
-      <div class="InputWrapper">
-        <input class="Input" v-model="command" v-el:input>
+    <div class="Terminal-front">
+      <div class="Terminal-screen">
+        <div class="History">
+          <pre v-for="line in output" track-by="$index" class="Step" :class="{
+            'Step--error': line.type === 'ERR',
+            'Step--output': line.type === 'OUTPUT',
+            'Step--input': line.type === 'INPUT',
+            'Step--instruction': line.type === 'INSTRUCTION'
+          }">{{line.type === 'INPUT' ? '$ ' : '' }}{{line.text}}</pre>
+        </div>
+
+        <form class="Form" @submit="submit">
+          <div class="Sign">$&nbsp;</div>
+          <div class="InputWrapper">
+            <input class="Input" v-model="command" @keydown="keydown" v-el:input>
+          </div>
+        </form>
       </div>
-    </form>
+
+      <div class="Terminal-buttons">
+        <tb-button color="grey" :turbo="turbo" @click="toggleTurbo">Turbo</tb-button>
+        <tb-button>Level Selection</tb-button>
+      </div>
+    </div>
   </div>
 </template>
 
 
 <script>
-import { getOutput, getHistory } from '../vuex/getters'
-import { sendCommand } from '../vuex/actions'
+import _ from 'lodash'
+import Button from 'components/Button'
+import { getOutput, getHistory, getTurbo } from '../vuex/getters'
+import { sendCommand, toggleTurbo } from '../vuex/actions'
 
 module.exports = {
   data: () => {
@@ -98,12 +130,18 @@ module.exports = {
   vuex: {
     getters: {
       output: getOutput,
-      history: getHistory
+      history: getHistory,
+      turbo: getTurbo
     },
 
     actions: {
-      sendCommand
+      sendCommand,
+      toggleTurbo
     }
+  },
+
+  components: {
+    'tb-button': Button
   },
 
   watch: {
@@ -130,6 +168,23 @@ module.exports = {
 
     focusInput () {
       this.$els.input.focus()
+    },
+
+    keydown () {
+      if (this.turbo) {
+        const body = document.getElementsByTagName('body')[0]
+        body.className = 'shake'
+        const x = _.random(-20, 20)
+        const y = _.random(-20, 20)
+        body.style.transform = `translate(${x}px, ${y}px)`
+
+        setTimeout(function () {
+          document.getElementsByTagName('body')[0].className = ''
+          body.style.transform = 'translate(0px, 0px)'
+        }, 50)
+        console.log('turbo turbo turbo')
+      }
+      console.log('key down')
     }
   }
 }

@@ -9,3 +9,7 @@ export function reset ({dispatch}) {
 export function nextSection ({dispatch, state}) {
   dispatch('START_SECTION', state.currentLesson, state.currentSection + 1)
 }
+
+export function toggleTurbo ({dispatch}) {
+  dispatch('TOGGLE_TURBO')
+}

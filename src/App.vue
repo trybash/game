@@ -10,13 +10,18 @@
 }
 
 body {
-  background-color #ddd
-  font-family 'Source Sans Pro'
+  background-color site-background
+  font-family 'Source Sans Pro', Helvetica, Arial, sans-serif
 
   &.yolo {
-    transition-property: transform;
-    transition-duration: 1s;
-    transform: rotate(360deg);
+    transition-property transform
+    transition-duration 1s
+    transform rotate(360deg)
+  }
+
+  &.shake {
+    transition-property transform
+    transition-duration 0.05s
   }
 }
 
@@ -60,6 +65,8 @@ body {
     display flex
     flex-direction row
     width 100%
+    height 100%
+    padding-bottom 1em
   }
 
   &-terminal,
@@ -68,7 +75,7 @@ body {
 
   &-terminal {
     flex 2
-    height 50vh
+    height 100%
   }
 
   &-task {
@@ -79,7 +86,7 @@ body {
 </style>
 
 <template>
-  <div class="Container">
+  <div class="Container" :class="{ turbo: turbo }">
     <header class="Header">
       <div class="Header-left"></div>
       <div class="Header-right">
