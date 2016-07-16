@@ -45,7 +45,7 @@ describe('Terminal.vue', () => {
     it('should not call screenshake if turbo is false', () => {
       const screenShake = sinon.spy()
       Terminal.methods.keydown.call({turbo: false, screenShake})
-      expect(screenShake.calledOnce).to.be.true
+      expect(screenShake.calledOnce).to.be.false
     })
   })
 
