@@ -4,14 +4,17 @@
   .Task {
     padding 1em
     background-color yellow
-    white-space pre-wrap
+
+    &-text {
+      white-space pre-wrap
+    }
   }
 </style>
 
 <template>
   <div class="Task">
-    <h3 class="Headline">Current Task</h3>
-    <div class="Text">{{task}}</div>
+    <h3 class="Task-headline">Current Task</h3>
+    <div class="Task-text">{{task}}</div>
   </div>
 </template>
 
