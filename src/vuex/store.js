@@ -37,6 +37,7 @@ const initialState = {
   completedLessons: [],
   output: [],
   turbo: false,
+  lessonSelectionActive: false,
   emulator: lessons[0].sections[0].emulator
 }
 
@@ -83,6 +84,10 @@ const mutations = {
 
   TOGGLE_TURBO (state) {
     state.turbo = !state.turbo
+  },
+
+  ACTIVATE_LEVEL_SELECTION (state) {
+    state.lessonSelectionActive = true
   }
 }
 

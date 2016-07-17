@@ -43,3 +43,7 @@ export function getSolved (state) {
 export function getTurbo (state) {
   return state.turbo
 }
+
+export function getLessonSelectionActive (state) {
+  return state.lessonSelectionActive
+}

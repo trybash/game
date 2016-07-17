@@ -13,3 +13,7 @@ export function nextSection ({dispatch, state}) {
 export function toggleTurbo ({dispatch}) {
   dispatch('TOGGLE_TURBO')
 }
+
+export function activateLevelSelection ({dispatch}) {
+  dispatch('ACTIVATE_LEVEL_SELECTION')
+}

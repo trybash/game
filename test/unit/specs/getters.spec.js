@@ -12,7 +12,8 @@ const state = {
   turbo: true,
   currentSection: 2,
   currentLesson: 2,
-  completedLessons: [1, 2]
+  completedLessons: [1, 2],
+  lessonSelectionActive: false
 }
 
 describe('getters', () => {
@@ -86,6 +87,13 @@ describe('getters', () => {
     it('should return the turbo', () => {
       const result = getters.getTurbo(state)
       expect(result).to.equal(true)
+    })
+  })
+
+  describe('getLessonSelectionActive', () => {
+    it('should return if lesson selection is active', () => {
+      const result = getters.getLessonSelectionActive(state)
+      expect(result).to.equal(false)
     })
   })
 

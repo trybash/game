@@ -35,10 +35,18 @@ describe('actions', () => {
   describe('toggleTurbo', () => {
     it('should toggle the turbo', () => {
       const dispatch = sinon.spy()
-      const state = { turbo: false }
-      actions.toggleTurbo({dispatch, state})
+      actions.toggleTurbo({dispatch})
       expect(dispatch.calledOnce).to.be.true
       expect(dispatch.calledWith('TOGGLE_TURBO'))
+    })
+  })
+
+  describe('activateLevelSelection', () => {
+    it('should activate the level selection', () => {
+      const dispatch = sinon.spy()
+      actions.activateLevelSelection({dispatch})
+      expect(dispatch.calledOnce).to.be.true
+      expect(dispatch.calledWith('ACTIVATE_LEVEL_SELECTION'))
     })
   })
 })
