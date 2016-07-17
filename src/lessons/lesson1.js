@@ -24,8 +24,7 @@ cat file1 | less
 
 We will learn more about cat as we go along.`
 
-const filesystemsExplained = `
-The file system exists on any computer system, and can be thought of as having a tree structure, with leaves attached to each branch, cascading upwards (or downwards) from the root.
+const filesystemsExplained = `The file system exists on any computer system, and can be thought of as having a tree structure, with leaves attached to each branch, cascading upwards (or downwards) from the root.
 
 A less abstract example, would be to think of the file system kind of like a library.
 
@@ -176,28 +175,28 @@ type: ls`,
 
 type: cat ls_explained.txt`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('cat ls_explained.txt')
     },
     {
       task: `We should have a basic understanding of what 'ls' does. Also, we have now tried 'cat,' which we will spend more time on later in this tutorial. We'll also be learning about "switches" or "flags" of commands. These appear as the command itself, followed by a hyphen one or more trailing letters.
 
 type: ls -a`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('ls -a')
     },
     {
       task: `We will use various switches throughout the tutorial, and you'll see how useful they are to enhance the default behavior of commands. They are far deeper than we will cover, but you'll learn the basics.
 
 type: ls -l`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('ls -l')
     },
     {
       task: `Ok, so we have listed items in our directory, but what if our files are somewhere else? No problem. We can just move to another one. As you have noticed by using the 'ls' command, it's easy to tell which items are files and which are directories.
 
 type: cd Documents`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('cd Documents')
     },
     {
       task: `We are now in a new directory, or folder, named Documents. Let's list it's contents.
@@ -211,28 +210,28 @@ type: ls`,
 
 type: cd ..`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('cd ..')
     },
     {
       task: `Ok, now we're really making progress. We know how to list directories, and navigate around. Let's practice some more.
 
 type: cd /Documents/Homework/`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('cd /Documents/Homework')
     },
     {
       task: `Now, lets move to another location.
 
 type: cd /Videos/Vacation/`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('cd /Videos/Vacation')
     },
     {
       task: `All this moving around could make one's head spin. How do figure out where we are within the entire tree structure? Easy, we use the print working directory command.
 
 type: pwd`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('pwd')
     },
     {
       task: `This concludes our first lesson. Make sure to read the filesystem_explained.txt (using cat) in the Documents folder, if you need help conceptualizing directory structures. We'll next learn about moving and copying items.
