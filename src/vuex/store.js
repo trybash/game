@@ -9,7 +9,7 @@ import * as getters from 'src/vuex/getters'
 Vue.use(Vuex)
 Vue.use(VueResource)
 
-function saveLocalStorage (state) {
+export function saveLocalStorage (state) {
   window.localStorage.state = JSON.stringify(_.pick(state, [
     'currentLesson',
     'currentSection',
@@ -21,7 +21,6 @@ function saveLocalStorage (state) {
 }
 
 const vuexState = JSON.parse(window.localStorage.state || '{}')
-
 const emulator = window.emulator = BashEmulator(vuexState.emulator)
 
 emulator.commands.clear = utils.clear
@@ -41,9 +40,8 @@ const initialState = {
   emulator: lessons[0].sections[0].emulator
 }
 
-const mutations = {
+export const mutations = {
   START_SECTION (state, lessonNumber, sectionNumber) {
-    console.log(`start lesson ${lessonNumber} and section ${sectionNumber}`)
     state.solvedCurrentSection = false
     state.currentLesson = lessonNumber
     state.currentSection = sectionNumber
@@ -71,12 +69,8 @@ const mutations = {
       })
   },
 
-  UPDATE_TASK (state, newTask) {
-    state.task = newTask
-  },
-
   RESET (state) {
-    _.forIn(_.cloneDeep(initialState), (value, key) => {
+    _.forIn(initialState, (value, key) => {
       state[key] = value
     })
     saveLocalStorage(state)

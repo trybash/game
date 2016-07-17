@@ -39,16 +39,34 @@ body {
 .Header {
   display flex
   flex-direction row
+  height 73px
 
-  margin-bottom 1em
+  margin-bottom 5em
 
-  padding 1em
+  padding-left 1em
+  padding-right 1em
 
   background-color black
+
+  &-left {
+    display flex
+  }
+
+  &-right {
+    z-index 500
+  }
 
   &-left,
   &-right {
     flex 1
+  }
+}
+
+.Logo {
+  display flex
+  &-image {
+    display block
+    width 150px
   }
 }
 
@@ -90,10 +108,14 @@ body {
 <template>
   <div class="Container" :class="{ turbo: turbo }">
     <header class="Header">
-      <div class="Header-left"></div>
+      <div class="Header-left">
+        <a href="/" class="Logo">
+          <img src="assets/logo.svg" class="Logo-image" alt="TryBash">
+        </a>
+      </div>
+
       <div class="Header-right">
-        <tb-progress :current="currentSection" :max="maxSection"></tb-progress>
-        <tb-progress :current="currentLesson" :max="maxLesson"></tb-progress>
+        <tb-progress></tb-progress>
       </div>
     </header>
 
@@ -123,7 +145,6 @@ import Done from 'components/Done'
 import LessonSelection from 'components/LessonSelection'
 
 import store from './vuex/store'
-import { getCompletedSectionCount, getSectionLength, getCompletedCount, getLessonCount } from './vuex/getters'
 
 export default {
   components: {
@@ -135,15 +156,6 @@ export default {
     'tb-lesson-selection': LessonSelection
   },
 
-  store,
-
-  vuex: {
-    getters: {
-      currentSection: getCompletedSectionCount,
-      maxSection: getSectionLength,
-      currentLesson: getCompletedCount,
-      maxLesson: getLessonCount
-    }
-  }
+  store
 }
 </script>

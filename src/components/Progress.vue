@@ -3,34 +3,11 @@
 @import '../stylus/colors'
 
 .Progress {
-  &-fill,
-  &-text {
-    display block
-    text-align left
-    white-space nowrap
-  }
-
-  &-fill {
-    background-color green
-    color #fff
-    z-index 1337
-    overflow hidden
-
-    transition-property width
-    transition-duration 0.2s
-  }
-
-  &-fillPadding,
-  &-text {
-    padding 0.5em
-  }
-
-  &-text {
-    position absolute
-    width 100%
-    top 0
-    background-color white
-  }
+  padding 1em
+  border-bottom-left-radius 5px
+  border-bottom-right-radius 5px
+  background-color grey-light
+  box-shadow 0 4px 0 rgba(black, 0.2)
 }
 
 </style>
@@ -39,29 +16,31 @@
 <template>
 
 <div class="Progress">
-  <div class="Progress-bar">
-    <div class="Progress-fill" :style="{ width: fillWidth }">
-      <div class="Progress-fillPadding">
-        {{ current }} / {{ max }}
-      </div>
-    </div>
-
-    <div class="Progress-text">
-      {{ current }} / {{ max }}
-    </div>
-  </div>
+  <!-- <tb-progress-bar :current="currentLesson" :max="maxLesson"></tb-progress-bar> -->
+  <tb-progress-blocks>Lessons</tb-progress-blocks>
+  <tb-progress-bar :current="currentSection" :max="maxSection">Sections</tb-progress-bar>
 </div>
 
 </template>
 
 
 <script>
-export default {
-  props: ['current', 'max'],
+import ProgressBlocks from 'components/ProgressBlocks'
+import ProgressBar from 'components/ProgressBar'
+import { getCompletedSectionCount, getSectionLength, getCompletedCount, getLessonCount } from '../vuex/getters'
 
-  computed: {
-    fillWidth () {
-      return (this.current * 100 / this.max) + '%'
+export default {
+  components: {
+    'tb-progress-blocks': ProgressBlocks,
+    'tb-progress-bar': ProgressBar
+  },
+
+  vuex: {
+    getters: {
+      currentSection: getCompletedSectionCount,
+      maxSection: getSectionLength,
+      currentLesson: getCompletedCount,
+      maxLesson: getLessonCount
     }
   }
 }

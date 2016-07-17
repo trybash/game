@@ -1,24 +1,24 @@
 import _ from 'lodash'
 
 module.exports = {
-  clear (env, args) {
+  clear (env) {
     const $0 = document.getElementsByClassName('Step')[0]
     const lineHeight = parseFloat(window.getComputedStyle($0)['line-height'], 10)
     const $terminal = document.getElementsByClassName('Terminal')[0]
-    const height = parseFloat($terminal.offsetHeight)
-    const numberOfLines = parseInt(height / lineHeight)
+    const height = parseFloat($terminal.offsetHeight, 10)
+    const numberOfLines = parseInt(height / lineHeight, 10)
     env.output(new Array(numberOfLines).join('\n'))
     env.exit()
   },
 
-  yolo (env, args) {
+  yolo (env, args, delay = 1000) {
     document.getElementsByTagName('body')[0].className = 'yolo'
     setTimeout(function () {
       document.getElementsByTagName('body')[0].className = ''
-    }, 1000)
+    }, delay)
   },
 
-  screenShake () {
+  screenShake (env, args, delay = 50) {
     const body = document.getElementsByTagName('body')[0]
     body.className = 'shake'
     const x = _.random(-10, 10)
@@ -28,6 +28,6 @@ module.exports = {
     setTimeout(function () {
       document.getElementsByTagName('body')[0].className = ''
       body.style.transform = ''
-    }, 50)
+    }, delay)
   }
 }

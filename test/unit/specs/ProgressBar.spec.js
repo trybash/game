@@ -1,11 +1,11 @@
 // import Vue from 'vue'
-import Progress from 'src/components/Progress'
+import ProgressBar from 'src/components/ProgressBar'
 
 function fillWidth (current, max) {
-  return Progress.computed.fillWidth.bind({current, max})()
+  return ProgressBar.computed.fillWidth.bind({current, max})()
 }
 
-describe('Progress.vue', () => {
+describe('ProgressBar.vue', () => {
   it('should calculate fill width', () => {
     let result = fillWidth(0, 10)
     expect(result).to.equal('0%')

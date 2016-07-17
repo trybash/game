@@ -37,7 +37,11 @@ export function getHistory (state) {
 }
 
 export function getSolved (state) {
-  return getSection(state).checkSolved(state) || state.solvedCurrentSection
+  try {
+    return getSection(state).checkSolved(state) || state.solvedCurrentSection
+  } catch (e) {
+    return state.solvedCurrentSection
+  }
 }
 
 export function getTurbo (state) {
