@@ -74,8 +74,12 @@ export const mutations = {
     state.turbo = !state.turbo
   },
 
-  ACTIVATE_LEVEL_SELECTION (state) {
+  ACTIVATE_LESSON_SELECTION (state) {
     state.lessonSelectionActive = true
+  },
+
+  DEACTIVATE_LESSON_SELECTION (state) {
+    state.lessonSelectionActive = false
   }
 }
 

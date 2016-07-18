@@ -118,7 +118,7 @@
       <div class="Terminal-buttons">
         <tb-button color="grey" :turbo="turbo" @click="toggleTurbo">Turbo</tb-button>
         <div class="Terminal-floppy"></div>
-        <tb-button @click="activateLevelSelection">Level Selection</tb-button>
+        <tb-button @click="activateLessonSelection">Lesson Selection</tb-button>
       </div>
     </div>
   </div>
@@ -128,7 +128,7 @@
 <script>
 import Button from 'components/Button'
 import { getOutput, getHistory, getTurbo } from '../vuex/getters'
-import { sendCommand, toggleTurbo, activateLevelSelection } from '../vuex/actions'
+import { sendCommand, toggleTurbo, activateLessonSelection } from '../vuex/actions'
 import { screenShake } from '../utils'
 
 module.exports = {
@@ -140,7 +140,7 @@ module.exports = {
     actions: {
       sendCommand,
       toggleTurbo,
-      activateLevelSelection
+      activateLessonSelection
     },
 
     getters: {

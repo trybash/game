@@ -6,13 +6,14 @@
 
 <template>
   <tb-modal :active="active">
+    <tb-button color="grey" @click="deactivateLessonSelection">Close</tb-button>
     <h2>Choose a lesson</h2>
     <p>
       You can do the excercises in any order you want – although it'd probably be wise to do them in order, if you are new to the Bash.
     </p>
 
     <ul>
-      <li v-for="lesson in lessons">{{lesson.title}}</li>
+      <li v-for="lesson in lessons" @click="openLesson($index + 1)">{{lesson.title}}</li>
     </ul>
 
     <tb-button color="red" @click="reset">Reset all your data and start again</tb-button>
@@ -24,12 +25,14 @@
   import Button from 'components/Button'
 
   import { getLessons, getLessonSelectionActive } from '../vuex/getters'
-  import { reset } from '../vuex/actions'
+  import { reset, openLesson, deactivateLessonSelection } from '../vuex/actions'
 
   module.exports = {
     vuex: {
       actions: {
-        reset
+        reset,
+        openLesson,
+        deactivateLessonSelection
       },
 
       getters: {

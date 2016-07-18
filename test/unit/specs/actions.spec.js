@@ -41,12 +41,31 @@ describe('actions', () => {
     })
   })
 
-  describe('activateLevelSelection', () => {
-    it('should activate the level selection', () => {
+  describe('activateLessonSelection', () => {
+    it('should activate the lesson selection', () => {
       const dispatch = sinon.spy()
-      actions.activateLevelSelection({dispatch})
+      actions.activateLessonSelection({dispatch})
       expect(dispatch.calledOnce).to.be.true
-      expect(dispatch.calledWith('ACTIVATE_LEVEL_SELECTION'))
+      expect(dispatch.calledWith('ACTIVATE_LESSON_SELECTION'))
+    })
+  })
+
+  describe('deactivateLessonSelection', () => {
+    it('should deactivate the lesson selection', () => {
+      const dispatch = sinon.spy()
+      actions.deactivateLessonSelection({dispatch})
+      expect(dispatch.calledOnce).to.be.true
+      expect(dispatch.calledWith('DEACTIVATE_LESSON_SELECTION'))
+    })
+  })
+
+  describe('openLesson', () => {
+    it('it should open the specified lesson', () => {
+      const dispatch = sinon.spy()
+      actions.openLesson({dispatch}, 5)
+      expect(dispatch.calledTwice).to.be.true
+      expect(dispatch.calledWith('START_SECTION', 5, 1))
+      expect(dispatch.calledWith('DEACTIVATE_LESSON_SELECTION'))
     })
   })
 })
