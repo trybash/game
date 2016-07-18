@@ -20,7 +20,7 @@
 #   - Add content of private key file as value
 
 
-echo "Setup SSH"
+echo "Setup SSH\n"
 eval "$(ssh-agent -s)" # Start the ssh agent
 # Read key, replace \n with actual new lines and write to file
 echo "$DEPLOY_KEY" | sed 's/\\n/\n/g' > deploy_key.pem
