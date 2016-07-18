@@ -20,12 +20,6 @@ export function saveLocalStorage (state) {
   ]))
 }
 
-const vuexState = JSON.parse(window.localStorage.state || '{}')
-const emulator = window.emulator = BashEmulator(vuexState.emulator)
-
-emulator.commands.clear = utils.clear
-emulator.commands.yolo = utils.yolo
-
 const lessons = require('../lessons')
 
 const initialState = {
@@ -57,9 +51,9 @@ export const mutations = {
 
     emulator
       .run(command)
-      .then(result => {
+      .then((result) => {
         state.output.push({type: 'OUTPUT', text: result})
-      }, err => {
+      }, (err) => {
         state.output.push({type: 'ERR', text: err})
       })
       .then(() => {
@@ -85,9 +79,18 @@ export const mutations = {
   }
 }
 
+const vuexState = JSON.parse(window.localStorage.state || '{}')
+
 const store = new Vuex.Store({
   state: Object.assign({}, initialState, vuexState),
   mutations
 })
+
+const emulator = window.emulator = BashEmulator(vuexState.emulator)
+
+emulator.commands.clear = utils.clear
+emulator.commands.yolo = utils.yolo
+emulator.commands.sudo = utils.sudo(store)
+emulator.commands.reboot = utils.reboot
 
 export default store

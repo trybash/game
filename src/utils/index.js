@@ -15,10 +15,27 @@ module.exports = {
     document.getElementsByTagName('body')[0].className = 'yolo'
     setTimeout(function () {
       document.getElementsByTagName('body')[0].className = ''
+      env.exit()
     }, delay)
   },
 
-  screenShake (env, args, delay = 50) {
+  sudo (store) {
+    return (env, args) => {
+      if (args[0] !== 'reboot') {
+        env.exit(1)
+        return
+      }
+      store.dispatch('RESET')
+      env.exit()
+    }
+  },
+
+  reboot (env) {
+    env.output('reboot: Need to be root')
+    env.exit(1)
+  },
+
+  screenShake (delay = 50) {
     const body = document.getElementsByTagName('body')[0]
     body.className = 'shake'
     const x = _.random(-10, 10)
