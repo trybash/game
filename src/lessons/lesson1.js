@@ -161,7 +161,7 @@ const emulator = {
 }
 
 module.exports = {
-  title: 'Let\'s get right into it',
+  title: 'Navigation',
   sections: [
     {
       task: `Before we can do anything useful within the command line, we have to get acclimated with moving around the file system.

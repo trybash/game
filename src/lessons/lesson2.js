@@ -161,7 +161,7 @@ const emulator = {
 }
 
 module.exports = {
-  title: 'Let\'s get right into it',
+  title: 'Copying and Moving',
   sections: [
     {
       task: `This lesson we're going to learn some very important commands: copying files and moving them. Let's see what we have in our directory.

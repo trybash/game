@@ -161,7 +161,7 @@ const emulator = {
 }
 
 module.exports = {
-  title: 'Let\'s get right into it',
+  title: 'Creating and Removing of Files and Directories',
   sections: [
     {
       task: `We've learned how to use various commands so far: ls, pwd, cd, cp, mv to name a few, and some commonly used switches. Now, lets learn how to create directories.
