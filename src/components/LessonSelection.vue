@@ -5,7 +5,7 @@
 </style>
 
 <template>
-  <tb-modal :active="active">
+  <tb-modal :active="selectionActive">
     <tb-button color="grey" @click="deactivateLessonSelection">Close</tb-button>
     <h2>Choose a lesson</h2>
     <p>
@@ -24,7 +24,7 @@
   import Modal from 'components/Modal'
   import Button from 'components/Button'
 
-  import { getLessons, getLessonSelectionActive, getLessonSolved } from '../vuex/getters'
+  import { getLessons, getLessonSelectionActive } from '../vuex/getters'
   import { reset, openLesson, deactivateLessonSelection } from '../vuex/actions'
 
   module.exports = {
@@ -37,20 +37,13 @@
 
       getters: {
         lessons: getLessons,
-        selectionActive: getLessonSelectionActive,
-        lessonSolved: getLessonSolved
+        selectionActive: getLessonSelectionActive
       }
     },
 
     components: {
       'tb-modal': Modal,
       'tb-button': Button
-    },
-
-    computed: {
-      active () {
-        return this.selectionActive || this.lessonSolved
-      }
     }
   }
 </script>

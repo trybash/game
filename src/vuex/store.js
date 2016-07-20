@@ -42,6 +42,7 @@ export const mutations = {
 
     saveLocalStorage(state)
 
+    emulator.state.history = []
     Object.assign(emulator.state, state.lessons[state.currentLesson].sections[state.currentSection].emulator)
     state.emulator = emulator.state
   },
@@ -62,6 +63,7 @@ export const mutations = {
 
         if (getters.getLessonSolved(state)) {
           mutations.ADD_COMPLETED_LESSON(state, getters.getLesson(state).index)
+          mutations.ACTIVATE_LESSON_SELECTION(state)
         }
 
         saveLocalStorage(state)
