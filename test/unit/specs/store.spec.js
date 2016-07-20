@@ -126,14 +126,16 @@ describe('store', () => {
       })
     })
 
-    describe('ACTIVATE_LESSON_SELECTION', () => { it('should set state.lessonSelectionActive to true', () => {
+    describe('ACTIVATE_LESSON_SELECTION', () => {
+      it('should set state.lessonSelectionActive to true', () => {
         const state = {lessonSelectionActive: false}
         store.mutations.ACTIVATE_LESSON_SELECTION(state)
         expect(state.lessonSelectionActive).to.be.true
       })
     })
 
-    describe('DEACTIVATE_LESSON_SELECTION', () => { it('should set state.lessonSelectionActive to false', () => {
+    describe('DEACTIVATE_LESSON_SELECTION', () => {
+      it('should set state.lessonSelectionActive to false', () => {
         const state = {lessonSelectionActive: true}
         store.mutations.DEACTIVATE_LESSON_SELECTION(state)
         expect(state.lessonSelectionActive).to.be.false
