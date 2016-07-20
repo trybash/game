@@ -40,11 +40,12 @@ export const mutations = {
     state.currentLesson = lessonNumber
     state.currentSection = sectionNumber
 
-    saveLocalStorage(state)
+    state.completedLessons.$remove(lessonNumber)
 
-    emulator.state.history = []
     Object.assign(emulator.state, state.lessons[state.currentLesson].sections[state.currentSection].emulator)
+    emulator.state.history = []
     state.emulator = emulator.state
+    saveLocalStorage(state)
   },
 
   SEND_COMMAND (state, command) {

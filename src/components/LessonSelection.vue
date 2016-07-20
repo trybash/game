@@ -1,6 +1,48 @@
-<style lang="stylus">
+<style lang="stylus" scoped>
+
+  @import '../stylus/colors'
+
   h2 {
     font-weight normal
+  }
+
+  .LessonSelection {
+    &-footer {
+      margin-left -1em
+      margin-right -1em
+      margin-bottom -1em
+
+      padding 1em
+      background-color grey-light
+      text-align center
+    }
+  }
+
+  .Lessons {
+    margin-top 1em
+    margin-bottom 1em
+
+    list-style-type none
+  }
+
+  .Lesson {
+    display flex
+    padding-top 0.5em
+    padding-bottom 0.5em
+
+    border-top 1px solid grey-light
+
+    &:last-child {
+      border-bottom 1px solid grey-light
+    }
+
+    &-left {
+      flex 1
+    }
+
+    &-right {
+
+    }
   }
 </style>
 
@@ -12,11 +54,23 @@
       You can do the excercises in any order you want – although it'd probably be wise to do them in order, if you are new to the Bash.
     </p>
 
-    <ul>
-      <li v-for="lesson in lessons" @click="openLesson($index)">{{lesson.title}}</li>
+    <ul class="Lessons">
+      <li class="Lesson" v-for="lesson in lessons">
+        <div class="Lesson-left">
+          {{lesson.title}}
+        </div>
+
+        <div class="Lesson-right">
+          <tb-button :color="getColor(lesson)" @click="lesson.active && !lesson.done ? deactivateLessonSelection() : openLesson($index)">
+            {{ getButtontext(lesson) }}
+          </tb-button>
+        </div>
+      </li>
     </ul>
 
-    <tb-button color="red" @click="reset">Reset all your data and start again</tb-button>
+    <div class="LessonSelection-footer">
+      <tb-button color="red" @click="reset">Reset all your data and start again</tb-button>
+    </div>
   </tb-modal>
 </template>
 
@@ -44,6 +98,22 @@
     components: {
       'tb-modal': Modal,
       'tb-button': Button
+    },
+
+    methods: {
+      getColor (lesson) {
+        let color = 'grey'
+        if (lesson.active) color = 'yellow'
+        if (lesson.done) color = 'green'
+        return color
+      },
+
+      getButtontext (lesson) {
+        let text = 'Start'
+        if (lesson.active) text = 'Continue'
+        if (lesson.done) text = 'Play Again'
+        return text
+      }
     }
   }
 </script>
