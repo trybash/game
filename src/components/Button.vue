@@ -35,7 +35,7 @@
     box-shadow: 0 3px 0 darken(grey-medium, 10%)
   }
 
-  &.turbo {
+  &.yellow {
     background-color yellow
     box-shadow: 0 3px 0 darken(yellow, 10%), 0 0 10px yellow
 
@@ -52,7 +52,7 @@
 <button class="Button" :class="{
   red: color === 'red',
   grey: color === 'grey',
-  turbo: turbo === true
+  yellow: color === 'yellow'
 }">
   <slot></slot>
 </button>
@@ -62,6 +62,6 @@
 
 <script>
   module.exports = {
-    props: ['color', 'turbo']
+    props: ['color']
   }
 </script>
