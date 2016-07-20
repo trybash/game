@@ -27,7 +27,7 @@
 <script>
 import ProgressBlocks from 'components/ProgressBlocks'
 import ProgressBar from 'components/ProgressBar'
-import { getCompletedSectionCount, getSectionLength, getCompletedCount, getLessonCount } from '../vuex/getters'
+import { getCompletedSectionCount, getSectionCount, getCompletedCount, getLessonCount } from '../vuex/getters'
 
 export default {
   components: {
@@ -38,7 +38,7 @@ export default {
   vuex: {
     getters: {
       currentSection: getCompletedSectionCount,
-      maxSection: getSectionLength,
+      maxSection: getSectionCount,
       currentLesson: getCompletedCount,
       maxLesson: getLessonCount
     }

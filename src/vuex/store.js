@@ -59,12 +59,22 @@ export const mutations = {
       .then(() => {
         state.emulator = emulator.state
         state.solvedCurrentSection = getters.getSolved(state)
+
+        if (getters.getLessonSolved(state)) {
+          mutations.ADD_COMPLETED_LESSON(state, getters.getLesson(state).index)
+        }
+
         saveLocalStorage(state)
       })
   },
 
+  ADD_COMPLETED_LESSON (state, index) {
+    state.completedLessons.push(index)
+    state.completedLessons = _.sortBy(_.uniq(state.completedLessons))
+  },
+
   RESET (state) {
-    _.forIn(initialState, (value, key) => {
+    _.forIn(_.cloneDeep(initialState), (value, key) => {
       state[key] = value
     })
     saveLocalStorage(state)
@@ -86,7 +96,7 @@ export const mutations = {
 const vuexState = JSON.parse(window.localStorage.state || '{}')
 
 const store = new Vuex.Store({
-  state: Object.assign({}, initialState, vuexState),
+  state: Object.assign(_.cloneDeep(initialState), vuexState),
   mutations
 })
 

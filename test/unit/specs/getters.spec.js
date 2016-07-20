@@ -4,9 +4,9 @@ const state = {
   lessons: [
     {title: 'Title 0'},
     {title: 'Title 1', sections: [
-      {task: 'Section 1'},
+      {task: 'Section 1', checkSolved () { return false }},
       {task: 'Section 2', checkSolved () { return true }},
-      {task: 'Section 3'}
+      {task: 'Section 3', checkSolved () { return true }}
     ]}
   ],
   turbo: true,
@@ -28,15 +28,21 @@ describe('getters', () => {
   })
 
   describe('getCompletedSectionCount', () => {
-    it('should return the current section', () => {
+    it('returns number of completed sections if currently working on a section', () => {
+      const state2 = Object.assign({}, state, {currentSection: 0})
+      const result = getters.getCompletedSectionCount(state2)
+      expect(result).to.equal(0)
+    })
+
+    it('returns number +1 if current section is also solved', () => {
       const result = getters.getCompletedSectionCount(state)
-      expect(result).to.equal(1)
+      expect(result).to.equal(2)
     })
   })
 
-  describe('getSectionLength', () => {
+  describe('getSectionCount', () => {
     it('should return length of current section', () => {
-      const result = getters.getSectionLength(state)
+      const result = getters.getSectionCount(state)
       expect(result).to.equal(3)
     })
   })
@@ -45,6 +51,21 @@ describe('getters', () => {
     it('should return how many lessons are completed', () => {
       const result = getters.getCompletedCount(state)
       expect(result).to.equal(2)
+    })
+  })
+
+  describe('getCompleted', () => {
+    it('returns indices of completed lessons', () => {
+      const result = getters.getCompleted(state)
+      expect(result).to.deep.equal([0, 1])
+    })
+  })
+
+  describe('getLesson', () => {
+    it('returns current lesson with index', () => {
+      const state2 = Object.assign({}, state, {currentLesson: 0})
+      const result = getters.getLesson(state2)
+      expect(result).to.deep.equal({title: 'Title 0', index: 0})
     })
   })
 
@@ -94,6 +115,19 @@ describe('getters', () => {
     it('should return if lesson selection is active', () => {
       const result = getters.getLessonSelectionActive(state)
       expect(result).to.equal(false)
+    })
+  })
+
+  describe('getLessonSolved', () => {
+    it('should return true if the last section of the lesson was solved', () => {
+      const state2 = Object.assign({}, state, {currentSection: 2})
+      const result = getters.getLessonSolved(state2)
+      expect(result).to.be.true
+    })
+
+    it('should return false if the last section of the lesson was not solved', () => {
+      const result = getters.getLessonSolved(state)
+      expect(result).to.be.false
     })
   })
 

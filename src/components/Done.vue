@@ -3,7 +3,7 @@
 </style>
 
 <template>
-  <tb-modal :active="solved">
+  <tb-modal :active="active">
     <div class="Done">
       <div>Fertig!</div>
       <tb-button @click="nextSection">Nächster Abschnitt →</tb-button>
@@ -14,7 +14,7 @@
 <script>
   import Button from './Button'
   import Modal from './Modal'
-  import { getSolved } from '../vuex/getters'
+  import { getSolved, getLessonSolved } from '../vuex/getters'
   import { nextSection } from '../vuex/actions'
 
   module.exports = {
@@ -28,7 +28,14 @@
         nextSection
       },
       getters: {
-        solved: getSolved
+        solved: getSolved,
+        lessonSolved: getLessonSolved
+      }
+    },
+
+    computed: {
+      active () {
+        return this.solved && !this.lessonSolved
       }
     }
   }

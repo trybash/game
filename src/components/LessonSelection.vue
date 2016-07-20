@@ -13,7 +13,7 @@
     </p>
 
     <ul>
-      <li v-for="lesson in lessons" @click="openLesson($index + 1)">{{lesson.title}}</li>
+      <li v-for="lesson in lessons" @click="openLesson($index)">{{lesson.title}}</li>
     </ul>
 
     <tb-button color="red" @click="reset">Reset all your data and start again</tb-button>
@@ -24,7 +24,7 @@
   import Modal from 'components/Modal'
   import Button from 'components/Button'
 
-  import { getLessons, getLessonSelectionActive } from '../vuex/getters'
+  import { getLessons, getLessonSelectionActive, getLessonSolved } from '../vuex/getters'
   import { reset, openLesson, deactivateLessonSelection } from '../vuex/actions'
 
   module.exports = {
@@ -37,13 +37,20 @@
 
       getters: {
         lessons: getLessons,
-        active: getLessonSelectionActive
+        selectionActive: getLessonSelectionActive,
+        lessonSolved: getLessonSolved
       }
     },
 
     components: {
       'tb-modal': Modal,
       'tb-button': Button
+    },
+
+    computed: {
+      active () {
+        return this.selectionActive || this.lessonSolved
+      }
     }
   }
 </script>

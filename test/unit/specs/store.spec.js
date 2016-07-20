@@ -55,6 +55,26 @@ describe('store', () => {
       })
     })
 
+    describe('ADD_COMPLETED_LESSON', () => {
+      it('adds the index to the array', () => {
+        const state = {completedLessons: []}
+        store.mutations.ADD_COMPLETED_LESSON(state, 0)
+        expect(state.completedLessons).to.deep.equal([0])
+      })
+
+      it('sorts the array ascending', () => {
+        const state = {completedLessons: [0, 1, 3]}
+        store.mutations.ADD_COMPLETED_LESSON(state, 2)
+        expect(state.completedLessons).to.deep.equal([0, 1, 2, 3])
+      })
+
+      it('doesnt create duplicate values', () => {
+        const state = {completedLessons: [0, 1, 2]}
+        store.mutations.ADD_COMPLETED_LESSON(state, 1)
+        expect(state.completedLessons).to.deep.equal([0, 1, 2])
+      })
+    })
+
     describe('RESET', () => {
       it('should reset the whole state', () => {
         const state = {}

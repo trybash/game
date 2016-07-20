@@ -68,4 +68,13 @@ describe('actions', () => {
       expect(dispatch.calledWith('DEACTIVATE_LESSON_SELECTION'))
     })
   })
+
+  describe('addCompletedLesson', () => {
+    it('dispatches the ADD_COMPLETED_LESSON mutation', () => {
+      const dispatch = sinon.spy()
+      actions.addCompletedLesson({dispatch}, 5)
+      expect(dispatch.calledOnce).to.be.true
+      expect(dispatch.calledWith('ADD_COMPLETED_LESSON', 5))
+    })
+  })
 })

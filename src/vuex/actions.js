@@ -11,7 +11,7 @@ export function nextSection ({dispatch, state}) {
 }
 
 export function openLesson ({dispatch}, lessonNumber) {
-  dispatch('START_SECTION', lessonNumber, 1)
+  dispatch('START_SECTION', lessonNumber, 0)
   dispatch('DEACTIVATE_LESSON_SELECTION')
 }
 
@@ -25,4 +25,8 @@ export function activateLessonSelection ({dispatch}) {
 
 export function deactivateLessonSelection ({dispatch}) {
   dispatch('DEACTIVATE_LESSON_SELECTION')
+}
+
+export function addCompletedLesson ({dispatch}, index) {
+  dispatch('ADD_COMPLETED_LESSON', index)
 }
