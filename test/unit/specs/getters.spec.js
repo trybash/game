@@ -10,9 +10,9 @@ const state = {
     ]}
   ],
   turbo: true,
-  currentSection: 2,
-  currentLesson: 2,
-  completedLessons: [1, 2],
+  currentSection: 1,
+  currentLesson: 1,
+  completedLessons: [0, 1],
   lessonSelectionActive: false
 }
 
@@ -28,7 +28,7 @@ describe('getters', () => {
   })
 
   describe('getCompletedSectionCount', () => {
-    it('should return the current section - 1', () => {
+    it('should return the current section', () => {
       const result = getters.getCompletedSectionCount(state)
       expect(result).to.equal(1)
     })
@@ -113,9 +113,9 @@ describe('getters', () => {
             {task: 'Section 3'}
           ]}
         ],
-        currentSection: 2,
-        currentLesson: 2,
-        completedLessons: [1, 2],
+        currentSection: 1,
+        currentLesson: 1,
+        completedLessons: [0, 1],
         solvedCurrentSection: true
       }
       const result = getters.getSolved(state)

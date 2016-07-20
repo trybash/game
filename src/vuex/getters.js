@@ -5,11 +5,11 @@ export function getLessons (state) {
 }
 
 export function getCompletedSectionCount (state) {
-  return state.currentSection - 1
+  return state.currentSection
 }
 
 export function getSectionLength (state) {
-  return state.lessons[state.currentLesson - 1].sections.length
+  return state.lessons[state.currentLesson].sections.length
 }
 
 export function getCompletedCount (state) {
@@ -21,7 +21,7 @@ export function getLessonCount (state) {
 }
 
 export function getSection (state) {
-  return state.lessons[state.currentLesson - 1].sections[state.currentSection - 1]
+  return state.lessons[state.currentLesson].sections[state.currentSection]
 }
 
 export function getTask (state) {

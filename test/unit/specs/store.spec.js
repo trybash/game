@@ -68,10 +68,10 @@ describe('store', () => {
           lessons: [{sections: [{}, {emulator: {}}]}]
         }
 
-        store.mutations.START_SECTION(state, 1, 1)
+        store.mutations.START_SECTION(state, 0, 0)
         expect(state.solvedCurrentSection).to.be.false
-        expect(state.currentLesson).to.equal(1)
-        expect(state.currentSection).to.equal(1)
+        expect(state.currentLesson).to.equal(0)
+        expect(state.currentSection).to.equal(0)
       })
     })
 
@@ -106,8 +106,8 @@ describe('store', () => {
       it('should reset the whole state', () => {
         const state = {}
         store.mutations.RESET(state)
-        expect(state.currentLesson).to.equal(1)
-        expect(state.currentSection).to.equal(1)
+        expect(state.currentLesson).to.equal(0)
+        expect(state.currentSection).to.equal(0)
         expect(state.solvedCurrentSection).to.be.false
       })
     })

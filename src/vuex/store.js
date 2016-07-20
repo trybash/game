@@ -23,8 +23,8 @@ export function saveLocalStorage (state) {
 const lessons = require('../lessons')
 
 const initialState = {
-  currentLesson: 1,
-  currentSection: 1,
+  currentLesson: 0,
+  currentSection: 0,
   solvedCurrentSection: false,
   lessons: lessons,
   completedLessons: [],
@@ -42,7 +42,7 @@ export const mutations = {
 
     saveLocalStorage(state)
 
-    Object.assign(emulator.state, state.lessons[state.currentLesson - 1].sections[state.currentSection - 1].emulator)
+    Object.assign(emulator.state, state.lessons[state.currentLesson].sections[state.currentSection].emulator)
     state.emulator = emulator.state
   },
 
