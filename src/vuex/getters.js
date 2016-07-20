@@ -1,6 +1,11 @@
 export function getLessons (state) {
   return state.lessons.map((lesson, index) => {
-    return { title: lesson.title, index }
+    return {
+      index,
+      title: lesson.title,
+      done: getCompleted(state).indexOf(index) > -1,
+      active: state.currentLesson === index
+    }
   })
 }
 

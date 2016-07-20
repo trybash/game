@@ -57,38 +57,23 @@
 
 <template>
   <div class="ProgressBlocks">
-    <div class="ProgressBlock" v-for="block in blocks" track-by="$index" :class="{
-      'is-done': block.done,
-      'is-active': block.active
+    <div class="ProgressBlock" v-for="lesson in lessons" track-by="$index" :class="{
+      'is-done': lesson.done,
+      'is-active': lesson.active
     }">
-      {{ block.active ? 'Current: ' : '' }} {{ block.index + 1}}
+      {{ lesson.active ? 'Current: ' : '' }} {{ lesson.index + 1}}
     </div>
   </div>
 </template>
 
 
 <script>
-  import {getCompleted, getLessonCount, getLesson, getLessons} from '../vuex/getters'
+  import {getLessons} from '../vuex/getters'
 
   module.exports = {
     vuex: {
       getters: {
-        count: getLessonCount,
-        completed: getCompleted,
-        lesson: getLesson,
         lessons: getLessons
-      }
-    },
-
-    computed: {
-      blocks () {
-        return this.lessons.map((lesson) => {
-          const block = {}
-          block.index = lesson.index
-          block.done = this.completed.indexOf(lesson.index) > -1
-          block.active = this.lesson.index === lesson.index
-          return block
-        })
       }
     }
   }

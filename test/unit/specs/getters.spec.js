@@ -18,11 +18,11 @@ const state = {
 
 describe('getters', () => {
   describe('getLessons', () => {
-    it('should return a list of title and index', () => {
+    it('should return a list of title, index, done and active', () => {
       const result = getters.getLessons(state)
       expect(result).to.deep.equal([
-        {title: 'Title 0', index: 0},
-        {title: 'Title 1', index: 1}
+        {title: 'Title 0', index: 0, done: true, active: false},
+        {title: 'Title 1', index: 1, done: true, active: true}
       ])
     })
   })
