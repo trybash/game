@@ -1,53 +1,6 @@
 import * as store from 'src/vuex/store'
 
 describe('store', () => {
-  /* describe('saveLocalStorage', () => {
-    it('should save the relevant parts of state to local storage', () => {
-      window.localStorage.state = {}
-
-      const now = Date.now()
-
-      const state = {
-        currentLesson: 1,
-        currentSection: 1,
-        solvedCurrentSection: false,
-        lessons: [],
-        completedLessons: [],
-        output: [],
-        turbo: false,
-        lessonSelectionActive: false,
-        emulator: {
-          history: [],
-          workingDirectory: '/home',
-          user: 'user',
-          fileSystem: {
-            '/home': { type: 'dir', modified: now }
-          }
-        },
-        randomStuff: 100
-      }
-
-      store.saveLocalStorage(state)
-
-      expect(window.localStorage.state).to.be.a.string
-      expect(JSON.parse(window.localStorage.state)).to.deep.equal({
-        currentLesson: 1,
-        currentSection: 1,
-        completedLessons: [],
-        solvedCurrentSection: false,
-        output: [],
-        emulator: {
-          history: [],
-          workingDirectory: '/home',
-          user: 'user',
-          fileSystem: {
-            '/home': { type: 'dir', modified: now }
-          }
-        }
-      })
-    })
-  })*/
-
   describe('vuexState', () => {
     it('should use {} if localStorage is empty', () => {
       delete window.localStorage.state
