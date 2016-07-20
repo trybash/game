@@ -53,6 +53,26 @@ describe('store', () => {
           done()
         }, 10)
       })
+
+      it('marks the lesson as completed if it was solved by that command', (done) => {
+        const state = {
+          output: [],
+          lessons: [
+            {title: 'Title 0', sections: [
+             {checkSolved () { return true }}
+            ]}
+          ],
+          currentSection: 0,
+          currentLesson: 0,
+          completedLessons: []
+        }
+
+        store.mutations.SEND_COMMAND(state, 'cd /')
+        setTimeout(function () {
+          expect(state.completedLessons).to.deep.equal([0])
+          done()
+        }, 10)
+      })
     })
 
     describe('ADD_COMPLETED_LESSON', () => {
