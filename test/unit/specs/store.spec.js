@@ -18,13 +18,18 @@ describe('store', () => {
     describe('START_SECTION', () => {
       it('should set the properties to the new lesson', () => {
         const state = {
-          lessons: [{sections: [{}, {emulator: {}}]}]
+          lessons: [{sections: [{}, {emulator: {}}]}],
+          completedLessons: {
+            $remove: sinon.spy()
+          }
         }
 
         store.mutations.START_SECTION(state, 0, 0)
         expect(state.solvedCurrentSection).to.be.false
         expect(state.currentLesson).to.equal(0)
         expect(state.currentSection).to.equal(0)
+        expect(state.completedLessons.$remove.calledOnce).to.be.true
+        expect(state.completedLessons.$remove.calledWith(0)).to.be.true
       })
     })
 
