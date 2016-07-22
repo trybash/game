@@ -21,7 +21,8 @@
   &-screen {
     flex 1
     height 100%
-    overflow scroll
+    overflow-y scroll
+    overflow-x hidden
     padding 1em
     box-shadow inset 0.5em 0.5em 0 rgba(black, 0.3)
     border-radius 3px
