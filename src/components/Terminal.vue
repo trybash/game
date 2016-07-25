@@ -162,6 +162,7 @@ module.exports = {
   },
 
   ready () {
+    this.focusInput()
     this.scrollBottom()
   },
 
