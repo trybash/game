@@ -11,7 +11,13 @@
 
 body {
   background-color site-background
+  background-image url("./assets/background.jpg")
+  background-height 100%
+  background-repeat no-repeat
+  background-size cover
+  background-position center top
   font-family 'Source Sans Pro', Helvetica, Arial, sans-serif
+
 
   &.yolo {
     transition-property transform
