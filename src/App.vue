@@ -53,7 +53,7 @@ body {
   }
 
   &-right {
-    z-index 500
+    z-index 15000
   }
 
   &-left,

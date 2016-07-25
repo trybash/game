@@ -43,10 +43,6 @@ export function getSection (state) {
   return state.lessons[state.currentLesson].sections[state.currentSection]
 }
 
-export function getTask (state) {
-  return getSection(state).task
-}
-
 export function getOutput (state) {
   return state.output
 }

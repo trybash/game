@@ -83,13 +83,6 @@ describe('getters', () => {
     })
   })
 
-  describe('getTask', () => {
-    it('should return the current sections task', () => {
-      const result = getters.getTask(state)
-      expect(result).to.equal('Section 2')
-    })
-  })
-
   describe('getOutput', () => {
     it('should return the output', () => {
       const result = getters.getOutput(state)

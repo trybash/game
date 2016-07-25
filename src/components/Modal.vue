@@ -31,7 +31,7 @@
       transform translate(-50%, -100vw)
       transition-property transform
       transition-duration 0.3s
-      z-index 1001
+      z-index 20001
     }
 
     &-backdrop {
@@ -41,7 +41,7 @@
       right 0
       bottom 0
       background-color rgba(#000, 0.2)
-      z-index 1000
+      z-index 20000
     }
   }
 </style>
