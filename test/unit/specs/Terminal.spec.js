@@ -16,6 +16,16 @@ describe('Terminal.vue', () => {
     })
   })
 
+  describe('watch', () => {
+    describe('output', () => {
+      it('calls scrollBottom', () => {
+        const spy = sinon.spy()
+        Terminal.watch.output.call({scrollBottom: spy})
+        expect(spy.calledOnce).to.be.true
+      })
+    })
+  })
+
   describe('scrollBottom', () => {
     it('should set scrollTop to scrollHeight', () => {
       let state = {$els: {terminal: {

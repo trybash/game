@@ -81,9 +81,9 @@ body {
 
   &-container {
     display flex
+    flex 1
     flex-direction row
     width 100%
-    height 100%
     padding-bottom 1em
   }
 
@@ -92,8 +92,9 @@ body {
   }
 
   &-terminal {
+    display flex
+    align-items stretch
     flex 2
-    height 100%
     padding-right 0.5em
   }
 

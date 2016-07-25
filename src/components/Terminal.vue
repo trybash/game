@@ -3,7 +3,8 @@
 @import '../stylus/colors'
 
 .Terminal {
-  height 100%
+  display flex
+  width 100%
   padding-bottom 10vh
   border-radius 10px
   background-color #ddd
@@ -11,7 +12,8 @@
 
   &-front {
     display flex
-    height 100%
+    flex 1
+    width 100%
     flex-direction column
     padding 1.5em
     border-radius 10px
