@@ -9,6 +9,8 @@ This is the source code for the browser-based TryBash game.
 
 [Have a look at the homepage](https://trybash.github.io/) to learn more about bash.
 
+For offline usage you can [download a copy of the game](https://github.com/trybash/game/archive/gh-pages.zip).
+
 
 ## Overview
 
