@@ -36,7 +36,7 @@
 
     &--enter,
     &--leave {
-      transform translate(-500px, -600px) rotate(-270deg)
+      transform translate(-50%, -1000%) rotate(-270deg)
       box-shadow 2px 4px 10px rgba(black, 1)
     }
   }
