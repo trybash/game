@@ -7,12 +7,17 @@
     left 0.5em
     right 0
 
-    padding 1em
-    background-color yellow
+    padding 1.5em
 
+    border-radius 2px
+    background-color task-background
     box-shadow 2px 4px 0 rgba(black, 0.2)
-
     z-index 10000
+
+    &-headline {
+      font-size 1em
+      margin-bottom 0.5em
+    }
 
     &-text {
       white-space pre-wrap
@@ -24,7 +29,7 @@
 
     &--transition {
       transition-property all
-      transition-duration 1.5s
+      transition-duration 1s
       transition-timing-function ease-in-out
       transform-origin 0 0
       transform translate(0, 0) rotate(4deg)

@@ -5,8 +5,9 @@
 <template>
   <tb-modal :active="active">
     <div class="Done">
-      <div>Fertig!</div>
-      <tb-button @click="nextSection">Nächster Abschnitt →</tb-button>
+      <div>Done!</div>
+      <tb-button @click="restartSection" color="red">Restart Section</tb-button>
+      <tb-button @click="nextSection">Next Section →</tb-button>
     </div>
   </tb-modal>
 </template>

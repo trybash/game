@@ -8,7 +8,7 @@ describe('LessonSelection.vue', () => {
           active: false,
           done: false
         })
-        expect(result).to.equal('grey')
+        expect(result).to.equal('green')
       })
 
       it('returns yellow if active but not done', () => {
@@ -30,7 +30,7 @@ describe('LessonSelection.vue', () => {
           active: true,
           done: true
         })
-        expect(result2).to.equal('green')
+        expect(result2).to.equal('yellow')
       })
     })
 

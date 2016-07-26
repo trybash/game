@@ -102,10 +102,7 @@
 
     methods: {
       getColor (lesson) {
-        let color = 'grey'
-        if (lesson.active) color = 'yellow'
-        if (lesson.done) color = 'green'
-        return color
+        return lesson.active ? 'yellow' : 'green'
       },
 
       getButtontext (lesson) {

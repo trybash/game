@@ -5,14 +5,21 @@
   .ProgressBlocks {
     display flex
     margin-bottom 1em
+
+    &-title {
+      height 40px
+      margin-right 0.25em
+
+      line-height 40px
+    }
   }
 
   .ProgressBlock {
     flex 1
     height 40px
 
-    margin-left 0.5em
-    margin-right 0.5em
+    margin-left 0.25em
+    margin-right 0.25em
 
     background-color white
 
@@ -57,11 +64,12 @@
 
 <template>
   <div class="ProgressBlocks">
+    <div class="ProgressBlocks-title"><slot></slot>:</div>
     <div class="ProgressBlock" v-for="lesson in lessons" track-by="$index" :class="{
       'is-done': lesson.done,
       'is-active': lesson.active
     }">
-      {{ lesson.active ? 'Current: ' : '' }} {{ lesson.index + 1}}
+      {{ lesson.index + 1}}
     </div>
   </div>
 </template>
