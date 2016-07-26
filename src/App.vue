@@ -11,7 +11,8 @@
 
 body {
   background-color site-background
-  background-image url("./assets/background.jpg")
+  // Absolute URL because relative fails with hosting on a sub route
+  background-image url("https://trybash.github.io/game/static/img/background.jpg")
   background-height 100%
   background-repeat no-repeat
   background-size cover
