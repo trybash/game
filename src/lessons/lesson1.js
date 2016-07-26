@@ -98,6 +98,11 @@ const emulator = {
       type: 'dir',
       modified: Date.now()
     },
+    '/home/user/Desktop/hello.txt': {
+      type: 'file',
+      modified: Date.now(),
+      content: 'Hello! This file is really empty!'
+    },
     '/home/user/Documents': {
       type: 'dir',
       modified: Date.now()
@@ -215,16 +220,16 @@ type: cd ..`,
     {
       task: `Ok, now we're really making progress. We know how to list directories, and navigate around. Let's practice some more.
 
-type: cd /Documents/Homework/`,
+type: cd /home/user/Documents/Homework/`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('cd /Documents/Homework')
+      checkSolved: utils.lastCommand('cd /home/user/Documents/Homework')
     },
     {
       task: `Now, lets move to another location.
 
-type: cd /Videos/Vacation/`,
+type: cd /home/user/Desktop`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('cd /Videos/Vacation')
+      checkSolved: utils.lastCommand('cd /home/user/Desktop')
     },
     {
       task: `All this moving around could make one's head spin. How do figure out where we are within the entire tree structure? Easy, we use the print working directory command.
