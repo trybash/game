@@ -7,7 +7,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '',
+    assetsPublicPath: '/game/',
     productionSourceMap: true,
     // gzip off by default as many popular static hosts such as
     // surge or netlify already gzip all static assets for you
