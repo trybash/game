@@ -35,6 +35,10 @@ module.exports = {
     env.exit(1)
   },
 
+  noop (env) {
+    env.exit()
+  },
+
   screenShake (delay = 50) {
     const body = document.getElementsByTagName('body')[0]
     body.className = 'shake'

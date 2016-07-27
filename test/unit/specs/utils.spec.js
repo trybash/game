@@ -40,6 +40,14 @@ describe('utils', () => {
     })
   })
 
+  describe('noop', () => {
+    it('calls exit without arguments', () => {
+      const env = { exit: sinon.spy() }
+      utils.noop(env)
+      expect(env.exit.calledWithExactly()).to.be.true
+    })
+  })
+
   describe('sudo', () => {
     it('only accepts reboot command', () => {
       const env = { exit: sinon.spy() }

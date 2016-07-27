@@ -113,6 +113,6 @@ emulator.commands.clear = utils.clear
 emulator.commands.yolo = utils.yolo
 emulator.commands.sudo = utils.sudo(store)
 emulator.commands.reboot = utils.reboot
-emulator.commands.next = (env) => env.exit()
+emulator.commands.next = utils.noop
 
 export default store
