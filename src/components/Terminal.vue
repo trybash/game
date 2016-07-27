@@ -121,7 +121,7 @@
       <div class="Terminal-buttons">
         <tb-button :color="turbo ? 'yellow' : 'grey'" @click="toggleTurbo">Turbo</tb-button>
         <div class="Terminal-floppy"></div>
-        <tb-button @click="activateLessonSelection">Lesson Selection</tb-button>
+        <tb-button color="blue" @click="activateLessonSelection">Lesson Selection</tb-button>
       </div>
     </div>
   </div>

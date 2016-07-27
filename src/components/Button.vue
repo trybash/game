@@ -42,6 +42,11 @@
     transition-property background-color box-shadow
     transition-duration 0.1s
   }
+
+  &.blue {
+    background-color blue
+    box-shadow: 0 3px 0 darken(blue, 10%)
+  }
 }
 
 </style>
@@ -52,7 +57,8 @@
 <button class="Button" :class="{
   red: color === 'red',
   grey: color === 'grey',
-  yellow: color === 'yellow'
+  yellow: color === 'yellow',
+  blue: color === 'blue'
 }">
   <slot></slot>
 </button>
