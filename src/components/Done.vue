@@ -7,7 +7,7 @@
     <div class="Done">
       <div>Done!</div>
       <tb-button @click="restartSection" color="red">Restart Section</tb-button>
-      <tb-button @click="nextSection">Next Section →</tb-button>
+      <tb-button @click="nextSection" v-el:next>Next Section →</tb-button>
     </div>
   </tb-modal>
 </template>
@@ -31,6 +31,12 @@
       getters: {
         solved: getSolved,
         lessonSolved: getLessonSolved
+      }
+    },
+
+    watch: {
+      active (val) {
+        if (val) this.$els.next.focus()
       }
     },
 
