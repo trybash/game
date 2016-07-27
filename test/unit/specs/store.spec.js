@@ -31,6 +31,19 @@ describe('store', () => {
         expect(state.completedLessons.$remove.calledOnce).to.be.true
         expect(state.completedLessons.$remove.calledWith(0)).to.be.true
       })
+
+      it('should not reset the output if the sectionNumber isnt 0', () => {
+        const state = {
+          lessons: [{sections: [{}, {emulator: {}}]}],
+          completedLessons: {
+            $remove: sinon.spy()
+          },
+          output: [1, 2, 3]
+        }
+
+        store.mutations.START_SECTION(state, 0, 1)
+        expect(state.output).to.deep.equal([1, 2, 3])
+      })
     })
 
     describe('SEND_COMMAND', () => {

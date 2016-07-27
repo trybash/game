@@ -45,6 +45,11 @@ export const mutations = {
     Object.assign(emulator.state, state.lessons[state.currentLesson].sections[state.currentSection].emulator)
     emulator.state.history = []
     state.emulator = emulator.state
+
+    if (sectionNumber === 0) {
+      state.output = []
+    }
+
     saveLocalStorage(state)
   },
 
