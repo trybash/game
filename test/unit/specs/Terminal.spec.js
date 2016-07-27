@@ -24,6 +24,34 @@ describe('Terminal.vue', () => {
         expect(spy.calledOnce).to.be.true
       })
     })
+
+    describe('lessonSelectionActive', () => {
+      it('calls focusInput if new val is true', () => {
+        const spy = sinon.spy()
+        Terminal.watch.lessonSelectionActive.call({focusInput: spy}, true)
+        expect(spy.calledOnce).to.be.true
+      })
+
+      it('doesnt call focusInput if new val is false', () => {
+        const spy = sinon.spy()
+        Terminal.watch.lessonSelectionActive.call({focusInput: spy}, false)
+        expect(spy.calledOnce).to.be.false
+      })
+    })
+
+    describe('doneModalActive', () => {
+      it('calls focusInput if new val is true', () => {
+        const spy = sinon.spy()
+        Terminal.watch.doneModalActive.call({focusInput: spy}, true)
+        expect(spy.calledOnce).to.be.true
+      })
+
+      it('doesnt call focusInput if new val is false', () => {
+        const spy = sinon.spy()
+        Terminal.watch.doneModalActive.call({focusInput: spy}, false)
+        expect(spy.calledOnce).to.be.false
+      })
+    })
   })
 
   describe('scrollBottom', () => {

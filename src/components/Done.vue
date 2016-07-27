@@ -15,7 +15,7 @@
 <script>
   import Button from './Button'
   import Modal from './Modal'
-  import { getSolved, getLessonSolved } from '../vuex/getters'
+  import { getDoneModalActive } from '../vuex/getters'
   import { nextSection } from '../vuex/actions'
 
   module.exports = {
@@ -29,20 +29,13 @@
         nextSection
       },
       getters: {
-        solved: getSolved,
-        lessonSolved: getLessonSolved
+        active: getDoneModalActive
       }
     },
 
     watch: {
       active (val) {
         if (val) this.$els.next.focus()
-      }
-    },
-
-    computed: {
-      active () {
-        return this.solved && !this.lessonSolved
       }
     }
   }

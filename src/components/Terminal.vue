@@ -130,7 +130,7 @@
 
 <script>
 import Button from 'components/Button'
-import { getOutput, getHistory, getTurbo } from '../vuex/getters'
+import { getOutput, getHistory, getTurbo, getDoneModalActive, getLessonSelectionActive } from '../vuex/getters'
 import { sendCommand, toggleTurbo, activateLessonSelection } from '../vuex/actions'
 import { screenShake } from '../utils'
 
@@ -149,7 +149,9 @@ module.exports = {
     getters: {
       output: getOutput,
       history: getHistory,
-      turbo: getTurbo
+      turbo: getTurbo,
+      doneModalActive: getDoneModalActive,
+      lessonSelectionActive: getLessonSelectionActive
     }
   },
 
@@ -160,6 +162,14 @@ module.exports = {
   watch: {
     output () {
       this.scrollBottom()
+    },
+
+    lessonSelectionActive (val) {
+      if (val === false) this.focusInput()
+    },
+
+    doneModalActive (val) {
+      if (val === false) this.focusInput()
     }
   },
 

@@ -125,12 +125,12 @@ describe('getters', () => {
   })
 
   describe('getSolved', () => {
-    it('should return if the current section is solved', () => {
+    it('should return true if the current section is solved', () => {
       const result = getters.getSolved(state)
       expect(result).to.equal(true)
     })
 
-    it('should return if the current section has ever been solved', () => {
+    it('should return true if the current section has ever been solved', () => {
       const state = {
         lessons: [
           {title: 'Title 0'},
@@ -147,6 +147,73 @@ describe('getters', () => {
       }
       const result = getters.getSolved(state)
       expect(result).to.equal(true)
+    })
+  })
+
+  describe('getDoneModalActive', () => {
+    it('is true if section is solved and lesson is not solved', () => {
+      const state = {
+        lessons: [
+          {title: 'Lesson 1', sections: [
+            {task: 'Section 1', checkSolved () { return true }},
+            {task: 'Section 2', checkSolved () { return true }}
+          ]}
+        ],
+        currentSection: 0,
+        currentLesson: 0,
+        completedLessons: []
+      }
+
+      const result = getters.getDoneModalActive(state)
+      expect(result).to.be.true
+    })
+
+    it('is false if section is not solved', () => {
+      let state = {
+        lessons: [
+          {title: 'Lesson 1', sections: [
+            {task: 'Section 1', checkSolved () { return false }}
+          ]}
+        ],
+        currentSection: 0,
+        currentLesson: 0,
+        completedLessons: [],
+        solvedCurrentSection: true
+      }
+
+      const result1 = getters.getDoneModalActive(state)
+      expect(result1).to.be.false
+
+      state = {
+        lessons: [
+          {title: 'Lesson 1', sections: [
+            {task: 'Section 1', checkSolved () { return false }}
+          ]}
+        ],
+        currentSection: 0,
+        currentLesson: 0,
+        completedLessons: [],
+        solvedCurrentSection: true
+      }
+      const result2 = getters.getDoneModalActive(state)
+      expect(result2).to.be.false
+    })
+
+    it('is false if lesson is solved', () => {
+      let state = {
+        lessons: [
+          {title: 'Lesson 1', sections: [
+            {task: 'Section 1', checkSolved () { return true }}
+          ]}
+        ],
+        currentSection: 0,
+        currentLesson: 0,
+        completedLessons: [],
+        solvedCurrentSection: true
+      }
+
+      const result1 = getters.getDoneModalActive(state)
+      expect(result1).to.be.false
     })
   })
 })

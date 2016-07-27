@@ -71,3 +71,7 @@ export function getTurbo (state) {
 export function getLessonSelectionActive (state) {
   return state.lessonSelectionActive
 }
+
+export function getDoneModalActive (state) {
+  return getSolved(state) && !getLessonSolved(state)
+}
