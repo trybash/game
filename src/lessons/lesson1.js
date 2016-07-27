@@ -171,79 +171,79 @@ module.exports = {
     {
       task: `Before we can do anything useful within the command line, we have to get acclimated with moving around the file system.
 
-type: ls`,
+Type: ls`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
     },
     {
       task: `Great! Throughout this tutorial, you'll find files named *_explained.txt which are more indepth/help files which are recommended for all new users, and can be skipped by those more experienced with the command line. To read them, we'll use another commonly used command.
 
-type: cat ls_explained.txt`,
+Type: cat ls_explained.txt`,
       emulator: emulator,
       checkSolved: utils.lastCommand('cat ls_explained.txt')
     },
     {
       task: `We should have a basic understanding of what 'ls' does. Also, we have now tried 'cat,' which we will spend more time on later in this tutorial. We'll also be learning about "switches" or "flags" of commands. These appear as the command itself, followed by a hyphen one or more trailing letters.
 
-type: ls -a`,
+Type: ls -a`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls -a')
     },
     {
       task: `We will use various switches throughout the tutorial, and you'll see how useful they are to enhance the default behavior of commands. They are far deeper than we will cover, but you'll learn the basics.
 
-type: ls -l`,
+Type: ls -l`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls -l')
     },
     {
       task: `Ok, so we have listed items in our directory, but what if our files are somewhere else? No problem. We can just move to another one. As you have noticed by using the 'ls' command, it's easy to tell which items are files and which are directories.
 
-type: cd Documents`,
+Type: cd Documents`,
       emulator: emulator,
       checkSolved: utils.lastCommand('cd Documents')
     },
     {
       task: `We are now in a new directory, or folder, named Documents. Let's list it's contents.
 
-type: ls`,
+Type: ls`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
     },
     {
       task: `Great! cd is used to move to any location, if you know the full path, you can just type it in. You can also simply move one step back.
 
-type: cd ..`,
+Type: cd ..`,
       emulator: emulator,
       checkSolved: utils.lastCommand('cd ..')
     },
     {
       task: `Ok, now we're really making progress. We know how to list directories, and navigate around. Let's practice some more.
 
-type: cd /home/user/Documents/Homework/`,
+Type: cd /home/user/Documents/Homework/`,
       emulator: emulator,
       checkSolved: utils.lastCommand('cd /home/user/Documents/Homework')
     },
     {
       task: `Now, lets move to another location.
 
-type: cd /home/user/Desktop`,
+Type: cd /home/user/Desktop`,
       emulator: emulator,
       checkSolved: utils.lastCommand('cd /home/user/Desktop')
     },
     {
       task: `All this moving around could make one's head spin. How do figure out where we are within the entire tree structure? Easy, we use the print working directory command.
 
-type: pwd`,
+Type: pwd`,
       emulator: emulator,
       checkSolved: utils.lastCommand('pwd')
     },
     {
       task: `This concludes our first lesson. Make sure to read the filesystem_explained.txt (using cat) in the Documents folder, if you need help conceptualizing directory structures. We'll next learn about moving and copying items.
 
-<not sure what they type here - continues?> =)`,
+Type \`next\` and you are done!`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('next')
     }
   ]
 }
