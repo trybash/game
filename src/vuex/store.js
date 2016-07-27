@@ -107,7 +107,7 @@ const store = new Vuex.Store({
   mutations
 })
 
-const emulator = window.emulator = BashEmulator(vuexState.emulator)
+export const emulator = window.emulator = BashEmulator(vuexState.emulator)
 
 emulator.commands.clear = utils.clear
 emulator.commands.yolo = utils.yolo

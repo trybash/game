@@ -110,12 +110,12 @@
           }">{{line.type === 'INPUT' ? '$ ' : '' }}{{line.text}}</pre>
         </div>
 
-        <form class="Form" @submit="submit">
+        <div class="Form">
           <div class="Sign">$&nbsp;</div>
           <div class="InputWrapper">
             <input class="Input" v-model="command" @keydown="keydown" v-el:input>
           </div>
-        </form>
+        </div>
       </div>
 
       <div class="Terminal-buttons">
@@ -132,7 +132,12 @@
 import Button from 'components/Button'
 import { getOutput, getHistory, getTurbo, getDoneModalActive, getLessonSelectionActive } from '../vuex/getters'
 import { sendCommand, toggleTurbo, activateLessonSelection } from '../vuex/actions'
+import { emulator } from '../vuex/store'
 import { screenShake } from '../utils'
+
+const ENTER = 13
+const UP = 38
+const DOWN = 40
 
 module.exports = {
   data () {
@@ -196,9 +201,38 @@ module.exports = {
 
     screenShake,
 
-    keydown () {
-      if (this.turbo) {
-        this.screenShake()
+    [UP]: emulator.completeUp,
+    [DOWN]: emulator.completeDown,
+
+    complete (direction) {
+      const input = this.$els.input
+      var completeFunction = this[direction]
+      if (!completeFunction) return
+      var cursorPosition = input.selectionStart
+      var beforeCursor = input.value.slice(0, cursorPosition)
+      completeFunction(beforeCursor).then((completion) => {
+        if (completion) {
+          this.command = completion // so Vue doesn't lose track
+          input.value = completion // so change is immediate and not whenever Vue gets to it
+          input.setSelectionRange(cursorPosition, cursorPosition)
+        }
+      })
+    },
+
+    keydown (e) {
+      if (this.turbo) this.screenShake()
+
+      if (e.which === ENTER) {
+        this.submit(e)
+      }
+
+      if (e.altKey || e.metaKey || e.shiftKey || e.ctrlKey) {
+        return
+      }
+
+      if (e.which === UP || e.which === DOWN) {
+        e.preventDefault()
+        this.complete(e.which)
       }
     }
   }
