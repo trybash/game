@@ -13,6 +13,7 @@
 body {
   background-color site-background
   font-family 'Fira Sans', Helvetica, Arial, sans-serif
+  overflow hidden
 
   &.yolo {
     transition-property transform

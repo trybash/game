@@ -164,7 +164,7 @@ module.exports = {
   title: 'Copying and Moving',
   sections: [
     {
-      task: `This lesson we're going to learn some very important commands: copying files and moving them. Let's see what we have in our directory.
+      task: `This lesson we're going to learn some very important actions: copying files and moving them. Let's see what we have in our directory.
 
 type: ls`,
       emulator: emulator,

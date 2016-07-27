@@ -5,6 +5,7 @@ import VueResource from 'vue-resource'
 import BashEmulator from 'bash-emulator'
 import * as utils from 'src/utils'
 import * as getters from 'src/vuex/getters'
+import lessons from '../lessons'
 
 Vue.use(Vuex)
 Vue.use(VueResource)
@@ -19,8 +20,6 @@ export function saveLocalStorage (state) {
     'emulator'
   ]))
 }
-
-const lessons = require('../lessons')
 
 const initialState = {
   currentLesson: 0,
