@@ -14,6 +14,9 @@ module.exports = merge(baseWebpackConfig, {
   module: {
     loaders: utils.styleLoaders()
   },
+  output: {
+    publicPath: ''
+  },
   // eval-source-map is faster for development
   devtool: '#eval-source-map',
   plugins: [
