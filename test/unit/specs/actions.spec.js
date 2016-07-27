@@ -19,6 +19,19 @@ describe('actions', () => {
     })
   })
 
+  describe('restartSection', () => {
+    it('should restart current section', () => {
+      const dispatch = sinon.spy()
+      const state = {
+        currentLesson: 0,
+        currentSection: 1
+      }
+      actions.restartSection({dispatch, state})
+      expect(dispatch.calledOnce).to.be.true
+      expect(dispatch.calledWithExactly('START_SECTION', 0, 1))
+    })
+  })
+
   describe('nextSection', () => {
     it('should start next section', () => {
       const dispatch = sinon.spy()

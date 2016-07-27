@@ -6,6 +6,10 @@ export function reset ({dispatch}) {
   dispatch('RESET')
 }
 
+export function restartSection ({dispatch, state}) {
+  dispatch('START_SECTION', state.currentLesson, state.currentSection)
+}
+
 export function nextSection ({dispatch, state}) {
   dispatch('START_SECTION', state.currentLesson, state.currentSection + 1)
 }

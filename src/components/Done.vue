@@ -16,7 +16,7 @@
   import Button from './Button'
   import Modal from './Modal'
   import { getDoneModalActive } from '../vuex/getters'
-  import { nextSection } from '../vuex/actions'
+  import { nextSection, restartSection } from '../vuex/actions'
 
   module.exports = {
     components: {
@@ -26,7 +26,8 @@
 
     vuex: {
       actions: {
-        nextSection
+        nextSection,
+        restartSection
       },
       getters: {
         active: getDoneModalActive
