@@ -37,7 +37,7 @@ body {
   height 100vh
 
   // Absolute URL because relative fails with hosting on a sub route
-  background-image url("https://trybash.github.io/game/static/img/background.jpg")
+  background-image url("~assets/background.jpg")
   background-height 100%
   background-repeat no-repeat
   background-size cover
