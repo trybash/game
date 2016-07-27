@@ -1,5 +1,6 @@
 <style lang="stylus">
 
+@import './stylus/fonts'
 @import './stylus/colors'
 
 * {
@@ -11,7 +12,7 @@
 
 body {
   background-color site-background
-  font-family 'Source Sans Pro', Helvetica, Arial, sans-serif
+  font-family 'Fira Sans', Helvetica, Arial, sans-serif
 
   &.yolo {
     transition-property transform

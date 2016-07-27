@@ -45,7 +45,7 @@
 
   &.blue {
     background-color blue
-    box-shadow: 0 3px 0 darken(blue, 10%)
+    box-shadow: 0 3px 0 darken(blue, 15%)
   }
 }
 
