@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/trybash/game.svg?branch=master)](https://travis-ci.org/trybash/game)
 
 
-> Learn Bash the easy way
+> Learn Bash the Easy Way
 
 This is the source code for the browser-based TryBash game.
 

@@ -12,9 +12,9 @@ module.exports = {
   },
 
   yolo (env, args, delay = 1000) {
-    document.getElementsByTagName('body')[0].className = 'yolo'
+    document.body.classList.add('yolo')
     setTimeout(function () {
-      document.getElementsByTagName('body')[0].className = ''
+      document.body.classList.remove('yolo')
       env.exit()
     }, delay)
   },
@@ -40,15 +40,14 @@ module.exports = {
   },
 
   screenShake (delay = 50) {
-    const body = document.getElementsByTagName('body')[0]
-    body.className = 'shake'
+    document.body.classList.add('shake')
     const x = _.random(-10, 10)
     const y = _.random(-10, 10)
-    body.style.transform = `translate(${x}px, ${y}px)`
+    document.body.style.transform = `translate(${x}px, ${y}px)`
 
     setTimeout(function () {
-      document.getElementsByTagName('body')[0].className = ''
-      body.style.transform = ''
+      document.body.classList.remove('shake')
+      document.body.style.transform = ''
     }, delay)
   }
 }
