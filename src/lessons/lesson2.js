@@ -209,56 +209,67 @@ module.exports = {
 
 Type <code>mv homework1.txt Documents/homework1.txt</code>`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO check file exists
+      checkSolved: utils.checkType('/home/user/Documents/homework1.txt', 'file')
     },
     {
       task: `The move syntax is pretty simple, <code>mv <em>source destination</em></code>. But you can even move several files at once! Wow! Time to clean up the other homework files:
 
 <code>mv homework2.txt homework3.txt Documents</code>`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // Check files exist
+      checkSolved: utils.compose(
+        utils.checkType('/home/user/Documents/homework2.txt', 'file'),
+        utils.checkType('/home/user/Documents/homework3.txt', 'file')
+      )
     },
     {
       task: `Now, lets move on to copying. This won't be hard, it has almost the same format.
 
 Copy the <code>dolly.sheep</code> file using <code>cp dolly.sheep clone.sheep</code>`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO check file exists
+      checkSolved: utils.checkType('/home/user/clone.sheep', 'file')
     },
     {
-      task: `Copying files, like many commands, allow adressing multiple files at once!
+      task: `Copying files, like <code>mv</code> and many other commands, allow adressing multiple files at once!
 
 Copy Dolly and her clone to the Documents folder, for example with <code>cp dolly.sheep clone.sheep Documents</code>`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO check both files exist
+      checkSolved: utils.compose(
+        utils.checkType('/home/user/dolly.sheep', 'file'),
+        utils.checkType('/home/user/clone.sheep', 'file'),
+        utils.checkType('/home/user/Documents/dolly.sheep', 'file'),
+        utils.checkType('/home/user/Documents/clone.sheep', 'file')
+      )
     },
     {
       task: `If you're not careful, you can overwrite files with <code>mv</code>, if the target file already exists.
 
-Try overwriting <code>b.txt</code> by moving <code>a.txt</code> in its place.`,
+Try taking <code>a.txt</code> to overwrite <code>b.txt</code> by moving it in its place.`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO check identical content
+      checkSolved: utils.compose(
+        utils.checkType('/home/user/a.txt', null),
+        utils.checkContent('/home/user/b.txt', 'A!')
+      )
     },
     {
       task: `Oops! You can always play it safe by using the <code>mv -n</code> switch, which does not overwrite existing files.
 
-Try overwriting <code>c.txt</code> with <code>b.txt</code>, but use the <code>-n</code> flag to keep your files safe.`,
+Try taking <code>b.txt</code> to overwrite <code>c.txt</code>, but this time, use the <code>-n</code> flag to keep your files safe.`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO check content
+      checkSolved: utils.compose(
+        utils.lastCommand('mv -n', true),
+        utils.checkType('/home/user/b.txt', 'file'),
+        utils.checkContent('/home/user/c.txt', 'C!')
+      )
     },
     {
-      task: `Lastly, you can copy the contents of a whole directory into another directory by using the <code>mv -R</code> switch.
+      task: `Lastly, you can even copy a whole directory somewhere else by using <code>cp -r</code>.
 
-Create a backup of your <code>Documents</code> into <code>BackedUpDocs</code>`,
+Rename your <code>Documents</code> folder into <code>MySheep</code>`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO check folder exists
+      checkSolved: utils.compose(
+        utils.checkType('/home/user/MySheep', 'dir'),
+        utils.checkType('/home/user/Documents', 'dir')
+      )
     },
     {
       task: `This concludes our second lesson. You should now be comforable navigating the file system, and copying and moving files around.

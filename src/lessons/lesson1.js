@@ -183,7 +183,7 @@ Try using <code>cat ls_explained.txt</code> to read the one about the <code>ls</
       checkSolved: utils.lastCommand('cat ls_explained.txt')
     },
     {
-      task: `After reading that, you should have a basic understanding of what <code>ls</code>' does. Also, we have now tried <code>cat</code>, which we will spend more time on later in this tutorial. We'll also be learning about "switches" or "flags" of commands. These appear as the command itself, followed by a hyphen and one or more trailing letters.
+      task: `After reading that, you should have a basic understanding of what <code>ls</code> does. Also, we have now tried <code>cat</code>, which we will spend more time on later. We'll also be learning about "switches" or "flags" of commands. These appear as the command itself, followed by a hyphen and one or more trailing letters.
 
 Type <code>ls -a</code> to show even the hidden files!`,
       emulator: emulator,
@@ -201,8 +201,7 @@ Type <code>ls -l</code> to show a directory listing with additional information.
 
 Type <code>cd Documents</code> to move to the Documents folder`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('cd Documents')
-      // TODO: Check if in Document Folder
+      checkSolved: utils.workingDirectory('/home/user/Documents')
     },
     {
       task: 'We are now in a new directory, or folder, named Documents. List its contents with one of the commands you learned so far.',
@@ -219,14 +218,14 @@ Type <code>cd Documents</code> to move to the Documents folder`,
 
 Go to <code>/home/user/Documents/Homework/</code>`,
       emulator: emulator,
-      checkSolved: utils.pwdIs('/home/user/Documents/Homework')
+      checkSolved: utils.workingDirectory('/home/user/Documents/Homework')
     },
     {
       task: `Now, lets move to another location.
 
 Go to <code>/home/user/Desktop</code>`,
       emulator: emulator,
-      checkSolved: utils.pwdIs('/home/user/Desktop')
+      checkSolved: utils.workingDirectory('/home/user/Desktop')
     },
     {
       task: 'All this moving around could make one\'s head spin. How do figure out where we are within the entire tree structure? Easy, we use the print working directory command: <code>pwd</code>.',

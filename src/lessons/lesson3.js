@@ -215,70 +215,72 @@ Now, lets learn how to create directories.
 
 To create your first folder try typing <code>mkdir testFolder</code>.`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO: check if testFolder is dir
+      checkSolved: utils.checkType('/home/user/testFolder', 'dir')
     },
     {
       task: 'Use a command you learned in a previous lesson to move into the <code>testFolder</code> directory, and we continue there.',
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO: check if workingDirectory is testFolder
+      checkSolved: utils.workingDirectory('/home/user/testFolder')
     },
     {
       task: `Now, let's create a new file at our current location.
-There are many ways to create a file, but one simply way is to use the <code>touch</code> command.
-Normally, <code>touch</code> updates timestamps on a file, but if the file does not exist, an empty file is create with it's name.
+There are many ways to create a file, but one simple way is to use the <code>touch</code> command.
+Normally, <code>touch</code> updates timestamps on a file, but if the file doesn't exist, an empty file is created with the provided name.
 
-Create a file called "test1.txt" by typing <code>touch test1.txt</code>.`,
+Create a file called <code>test1.txt</code> in <code>testFolder</code> by typing <code>touch test1.txt</code>.`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO: check if test1.txt is file
+      checkSolved: utils.checkType('/home/user/testFolder/test1.txt', 'file')
     },
     {
       task: `Now we have a new empty file. But we decide that we don't need the file anymore.
-We can delete it with the <code>rm</code> command.
+
+We can delete it with the <code>rm <em>filename</em></code> command.
+
 Try removing the file!`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO: check if test1.txt is gone
+      checkSolved: utils.checkType('/home/user/testFolder/test1.txt', null)
     },
     {
       task: `That was simple enough.
 Use a command from a previous lesson to list the contents of the directory you are currently in.`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO: check if base of last command was ls
+      checkSolved: utils.lastCommand('ls', true)
     },
     {
       task: `Let's return to the command we started this lesson with: <code>mkdir</code>.
 We can use it to quickly create multiple directories in one swing.
 
-Create three directories for items we want to store over the next three weeks by typing: <code>mkdir week1 week2 week3</code>.`,
+Create three directories inside the <code>testFolder</code> for items we want to store over the next three weeks by typing: <code>mkdir week1 week2 week3</code>.`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO: check if week1, week2, week3 are directories
+      checkSolved: utils.compose(
+        utils.checkType('/home/user/testFolder/week1', 'dir'),
+        utils.checkType('/home/user/testFolder/week2', 'dir'),
+        utils.checkType('/home/user/testFolder/week3', 'dir')
+      )
     },
     {
       task: `We, however, decide we only need two weeks, so let's delete week3. There are two ways to do this. First, we can use the <code>rm</code> command with the <code>-R</code> flag to make it recursive.
 This means it not only tries to delete one file, but instead a whole hierarchy.
 Try this with <code>rm -R week3</code>.`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO: check if week3 is gone
+      checkSolved: utils.compose(
+        utils.checkType('/home/user/testFolder/week1', 'dir'),
+        utils.checkType('/home/user/testFolder/week2', 'dir'),
+        utils.checkType('/home/user/testFolder/week3', null)
+      )
     },
     {
-      task: `As always within the command line, there are many ways to do tasks, so it's always best to do what you feel comfortable with. This time, use the <code>rmdir</code> command to delete the directory "week2".
+      task: `As always within the command line, there are many ways to do tasks, so it's always best to do what you feel comfortable with. This time, use the <code>rmdir</code> command to delete the directory <code>week2</code>.
 You can use <code>rmdir</code> the same way you used <code>rm -R</code>.`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO: check if week2 is gone
+      checkSolved: utils.checkType('/home/user/testFolder/week2', null)
     },
     {
       task: `We now have learned how to quickly create files with the touch command, and directories with the mkdir command. In the next lesson, we are ratch it up a notch, and learn about redirection.
 
 Type <code>next</code> when you are ready to finish this lesson.`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('next')
     }
   ]
 }
