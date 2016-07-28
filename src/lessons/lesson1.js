@@ -176,7 +176,7 @@ Type <code>ls</code> to show files and folders.`,
       checkSolved: utils.lastCommand('ls')
     },
     {
-      task: `Throughout this tutorial, you'll find files named *_explained.txt which are help files that are recommended for all new users, and can be skipped by those more experienced with the command line.
+      task: `Throughout this tutorial, you'll find files named ending with "_explained.txt" which are help files that are recommended for all new users, and can be skipped by those more experienced with the command line.
 
 Try using <code>cat ls_explained.txt</code> to read the one about the <code>ls</code> command.`,
       emulator: emulator,
@@ -185,7 +185,7 @@ Try using <code>cat ls_explained.txt</code> to read the one about the <code>ls</
     {
       task: `After reading that, you should have a basic understanding of what <code>ls</code> does. Also, we have now tried <code>cat</code>, which we will spend more time on later. We'll also be learning about "switches" or "flags" of commands. These appear as the command itself, followed by a hyphen and one or more trailing letters.
 
-Type <code>ls -a</code> to show even the hidden files!`,
+Type <code>ls -a</code> to show even the hidden files. The system normally hides files when their name starts with a ".".`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls -a')
     },
@@ -209,7 +209,7 @@ Type <code>cd Documents</code> to move to the Documents folder`,
       checkSolved: utils.lastCommand('ls', true)
     },
     {
-      task: 'Great! <code>cd</code> is used to move to any location, if you know the full path, you can just type it in. You can also simply move one step back by using <code>cd ..</code>. Try it!',
+      task: 'Great! <code>cd</code> can be used to move to any location. If you know the full path, you can just type it in. You can also simply move one step back by using <code>cd ..</code>. Try it!',
       emulator: emulator,
       checkSolved: utils.lastCommand('cd ..')
     },
