@@ -3,7 +3,12 @@ import _ from 'lodash'
 module.exports = {
   clear (env) {
     const $0 = document.getElementsByClassName('Step')[0]
-    const lineHeight = parseFloat(window.getComputedStyle($0)['line-height'], 10)
+    var lineHeight
+    try {
+      lineHeight = parseFloat(window.getComputedStyle($0)['line-height'], 10)
+    } catch (e) {
+      lineHeight = 17
+    }
     const $terminal = document.getElementsByClassName('Terminal')[0]
     const height = parseFloat($terminal.offsetHeight, 10)
     const numberOfLines = parseInt(height / lineHeight, 10)
