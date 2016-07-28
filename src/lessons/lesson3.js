@@ -40,8 +40,7 @@ In this same way, Computers handle files and directory based on their location f
 
 Most of us are familiar with this already. We have our Documents, Pictures, Music, and Videos directory usually setup for us went we originally setup our computer.
 
-Normally, we are accustomed to use modern day GUI operating systems, which handle many of our tasks for us via a file manager. And, in many cases, as we will learn, it's actually better to take a step back to an archaic time of the command line.
-`
+Normally, we are accustomed to use modern day GUI operating systems, which handle many of our tasks for us via a file manager. And, in many cases, as we will learn, it's actually better to take a step back to an archaic time of the command line.`
 
 const lsExplained = `The first command we'll explore is the 'ls' command. The ls command lists the contents of the current directory.
 
@@ -67,15 +66,47 @@ Another niceity with the usage of switches is that you can use more than one at 
 
 Ok, so we have a pretty good idea of how we can view content now, but how do move?`
 
-const pwdExplained = `
-So now that we can navigate around, and list content of our directories, it's very easy to get lost. How do I find out where I am?
+const pwdExplained = `So now that we can navigate around, and list content of our directories, it's very easy to get lost. How do I find out where I am?
 
 We can use the 'pwd' command, and it will show us the complete path to our current working directory. This is very useful for noting where we are when we work in a particular directory, and want to go there later. Or, simply if we lose track of where we are.
 
 We should have a pretty good idea of manuveuring around the file system by now, and seeing what files and subdirectories are available, and how to move around them, up and down, and even be able to always find out where we are. Also, we have learned about switches, and how they alter the normal behavior of commands so that they can provide other features, that the normal command alone would not offer.
 
-But, how can we do other stuff we're used to? In the next lesson we'll have a look at file manipulation, such that, we can move, copy, delete, create files and directories.
-`
+But, how can we do other stuff we're used to? In the next lesson we'll have a look at file manipulation, such that, we can move, copy, delete, create files and directories.`
+
+const mkdirExplained = `The mkdir command create directories. It stands for "MaKe DIRectory." It is the fundamental computer operation of creating a folder, and used to create storage directories for our different types of data.
+
+An important component of directories has to do with ownership, but is not within the scope of this tutorial. That will be developed in the future. Stay tuned.`
+
+const rmExplained = `Here we will discuss both the rm and rmdir commands, because of their similarity and overlap.
+
+The rm command is used for removing files. Be careful with it's use, there is no undo command. When you use the rm filename, you delete filename without question. Theoretically, it would be possible to recover the information, via additional software -- if done relatively immediately after the deletion.
+
+Just like with modern GUIs, the rm command 'unlinks' the file, meaning it is not accessible anymore by the system. However, the file is not technically 'deleted.' To completely remove a file, you would want to use the shred command, but that is outside the scope of this tutorial.
+
+Also, the rm command by default does not work on directories. To delete directories, you would need to use the recursive switch:
+
+rm -R directory
+
+Another alternative to delete a directory would be to use the rmdir command, which is specifically designed to delete directories.
+
+So, in summation, you can delete a file by using the rm command, and delete directories by using rm -R dirName or rmdir dirName.`
+
+const touchExplained = `The touch command is a very commonly used command for creating empty folders.
+
+The command changes the timestamps of file(s), so if the file already exists, the timestamp data, like when it was last accessed is updated to the current time. For the average computer user, normally, that is not of particularly great importance, but for some administrator or related purposes, it is very important.
+
+Additionally, what is a bonus feature of this command, if the file does not exist, it is created! The file of course will be empty, but you now have a container to throw stuff into. Many other bash commands only work if something goes into a file. So, often times, you'll need to just create an empty file to throw stuff into. Touch facilities this, by creating a file, as such:
+
+touch testFile
+
+The testFile is created!
+
+Of course, if you don't want to create a bunch of empty files, you could use the -c switch, as such:
+
+touch -c testFile
+
+This updates the timestamp on testFile, but if it does not exist, the file is not created.`
 
 const emulator = {
   history: [],
@@ -116,6 +147,21 @@ const emulator = {
       type: 'file',
       modified: Date.now(),
       content: filesystemsExplained
+    },
+    '/home/user/Documents/mkdirExplained.txt': {
+      type: 'file',
+      modified: Date.now(),
+      content: mkdirExplained
+    },
+    '/home/user/Documents/rmExplained.txt': {
+      type: 'file',
+      modified: Date.now(),
+      content: rmExplained
+    },
+    '/home/user/Documents/touchExplained.txt': {
+      type: 'file',
+      modified: Date.now(),
+      content: touchExplained
     },
     '/home/user/Documents/Homework': {
       type: 'dir',
@@ -164,63 +210,73 @@ module.exports = {
   title: 'Creating and Removing of Files and Directories',
   sections: [
     {
-      task: `We've learned how to use various commands so far: ls, pwd, cd, cp, mv to name a few, and some commonly used switches. Now, lets learn how to create directories.
+      task: `We've learned how to use various commands so far: <code>ls</code>, <code>pwd</code>, <code>cd</code>, <code>cp</code>, <code>mv</code> - to name a few.
+Now, lets learn how to create directories.
 
-type: mkdir testFolder`,
+To create your first folder try typing <code>mkdir testFolder</code>.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO: check if testFolder is dir
     },
     {
-      task: `Let's move into it, and learn another command while we're at it. We're going to learn how to quickly create a file.
-
-type: cd testFolder`,
+      task: 'Use a command you learned in a previous lesson to move into the <code>testFolder</code> directory, and we continue there.',
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO: check if workingDirectory is testFolder
     },
     {
-      task: `Now, there are many ways to create a folder, but one simply way is to use the touch command. Normally, the touch command updates timestamps on a file, but if it does not exist, an empty file is create with it's name.
+      task: `Now, let's create a new file at our current location.
+There are many ways to create a file, but one simply way is to use the <code>touch</code> command.
+Normally, <code>touch</code> updates timestamps on a file, but if the file does not exist, an empty file is create with it's name.
 
-type: touch test1.txt`,
+Create a file called "test1.txt" by typing <code>touch test1.txt</code>.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO: check if test1.txt is file
     },
     {
-      task: `So we have a new empty file, but we don't want to put anything inside of it, so let's delete it.
-
-type: rm test1.txt`,
+      task: `Now we have a new empty file. But we decide that we don't need the file anymore.
+We can delete it with the <code>rm</code> command.
+Try removing the file!`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO: check if test1.txt is gone
     },
     {
-      task: `That was simple enough, you can verify that the file is deleted by typing ls again.
-
-type: ls`,
+      task: `That was simple enough.
+Use a command from a previous lesson to list the contents of the directory you are currently in.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO: check if base of last command was ls
     },
     {
-      task: `Returning our original command mkdir, we can quickly create multiple directories in one swing. Let's create three directories for items we want to store over the next three weeks.
+      task: `Let's return to the command we started this lesson with: <code>mkdir</code>.
+We can use it to quickly create multiple directories in one swing.
 
-type: mkdir week1 week2 week3`,
+Create three directories for items we want to store over the next three weeks by typing: <code>mkdir week1 week2 week3</code>.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO: check if week1, week2, week3 are directories
     },
     {
-      task: `We, however, decide we only need two weeks, so let's delete week3. There are two ways to do this. First, we can use the rm command with a recursive switch.
-
-type: rm -R week3`,
+      task: `We, however, decide we only need two weeks, so let's delete week3. There are two ways to do this. First, we can use the <code>rm</code> command with the <code>-R</code> flag to make it recursive.
+This means it not only tries to delete one file, but instead a whole hierarchy.
+Try this with <code>rm -R week3</code>.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO: check if week3 is gone
     },
     {
-      task: `As always within the command line, there are many ways to do tasks, so it's always best to just always do what you feel comfortable with. This time, we'll use the rmdir command.
-
-type: rmdir week3`,
+      task: `As always within the command line, there are many ways to do tasks, so it's always best to do what you feel comfortable with. This time, use the <code>rmdir</code> command to delete the directory "week2".
+You can use <code>rmdir</code> the same way you used <code>rm -R</code>.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO: check if week2 is gone
     },
     {
-      task: 'We now have learned how to quickly create files with the touch command, and directories with the mkdir command. In the next lesson, we are ratch it up a notch, and learn about redirection.',
+      task: `We now have learned how to quickly create files with the touch command, and directories with the mkdir command. In the next lesson, we are ratch it up a notch, and learn about redirection.
+
+Type <code>next</code> when you are ready to finish this lesson.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
     }
