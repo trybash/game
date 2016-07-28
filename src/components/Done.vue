@@ -52,9 +52,7 @@
           'Awesome!',
           'Nice Job!',
           'Excellent!',
-          'Great!',
-          'Tolles Kino!',
-          'Are you a wizard?'
+          'Great!'
         ],
         praiseIndex: 0
       }

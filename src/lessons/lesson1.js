@@ -182,28 +182,32 @@ module.exports = {
   title: 'Navigation',
   sections: [
     {
-      task: `Before we can do anything useful within the command line, we have to get acclimated with moving around the file system.
+      task: `Hello there!
 
-Type <code>ls</code> to show files and folders.`,
+This is the TryBash command line.
+Before we can do anything useful within the command line, we have to get acclimated with moving around the file system.
+
+Type <code>ls</code> to list files and folders.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
     },
     {
-      task: `Throughout this tutorial, you'll find files named ending with "_explained.txt" which are help files that are recommended for all new users, and can be skipped by those more experienced with the command line.
+      task: `Throughout this tutorial, you'll find files named like "ls_explained.txt". These are help files that we recommend all new users to read. They can be skipped by those more experienced with the command line.
 
-Try using <code>cat ls_explained.txt</code> to read the one about the <code>ls</code> command.`,
+Try using <code>cat ls_explained.txt</code> to read the more about the <code>ls</code> command.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('cat ls_explained.txt')
     },
     {
-      task: `Wow, too much text on the screen. It's possible, from time to time, to find yourself with too much clutter in your console. To clear it, you can just use the clear command.
+      task: `Wow, too much text on the screen. It's possible, from time to time, to find yourself with too much clutter in your console. To clear it, you can just use the <code>clear</code> command.
 
 Type <code>clear</code> to clear the console.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('clear')
     },
     {
-      task: `We have now, also, tried the <code>cat</code> command, which we will spend more time on later in this tutorial. We'll also be learning about "switches" or "flags" of commands. These appear as the command itself, followed by a hyphen and one or more trailing letters.
+      task: `We have now used the <code>cat</code> command, which we will need again later in this tutorial.
+Next, we learn about "switches" or "flags" of commands. These appear as the command itself, followed by a hyphen and one or more trailing letters.
 
 Type <code>ls -a</code> to show even the hidden files!`,
       emulator: emulator,
@@ -219,17 +223,19 @@ Type <code>ls -l</code> to show a directory listing with additional information.
     {
       task: `Ok, so we have listed items in our directory, but what if our files are somewhere else? No problem. We can just move there. As you have noticed, by using the <code>ls</code> command, it's easy to tell which items are files and which are directories.
 
-Type <code>cd Documents</code> to move to the Documents folder`,
+Type <code>cd Documents</code> to <em>change</em> to the "Documents" folder.`,
       emulator: emulator,
       checkSolved: utils.workingDirectory('/home/user/Documents')
     },
     {
-      task: 'We are now in a new directory, or folder, named Documents. List its contents with one of the commands you learned so far.',
+      task: 'We are now in another folder named "Documents". List its contents with one of the commands you have learned so far.',
       emulator: emulator,
       checkSolved: utils.lastCommand('ls', true)
     },
     {
-      task: 'Great! <code>cd</code> can be used to move to any location. If you know the full path, you can just type it in. You can also simply move one step back by using <code>cd ..</code>. Try it!',
+      task: `Great! <code>cd</code> can be used to change the working directory to any location. If you know the full path, you can just type it in.
+
+Or you can also simply change one step back by using <code>cd ..</code> - Try it!`,
       emulator: emulator,
       checkSolved: utils.lastCommand('cd ..')
     },
@@ -248,14 +254,18 @@ Go to <code>/home/user/Desktop</code>`,
       checkSolved: utils.workingDirectory('/home/user/Desktop')
     },
     {
-      task: 'All this moving around could make one\'s head spin. How do figure out where we are within the entire tree structure? Easy, we use the print working directory command: <code>pwd</code>.',
+      task: `All this moving around could make one\'s head spin. How to figure out where we are within the entire file system?
+
+Easy! You can use the <em>print working directory</em> command: <code>pwd</code>.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('pwd')
     },
     {
-      task: `This concludes our first lesson. Make sure to read the <code>filesystem_explained.txt</code> (using <code>cat</code>) in the Documents folder, if you need help conceptualizing directory structures. We'll learn about moving and copying items next.
+      task: `This concludes our first lesson!
+Feel free to read the "filesystems_explained.txt" (using <code>cat</code>) in the "Documents" folder, if you need help conceptualizing directory structures.
+We will learn about moving and copying files in the next lesson.
 
-Type <code>next</code> when you are done! Or look around a bit more, if you want.`,
+Type <code>next</code> when you are done! Or look around a bit more, if you like.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('next')
     }

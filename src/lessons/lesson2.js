@@ -198,21 +198,23 @@ module.exports = {
   title: 'Copying and Moving',
   sections: [
     {
-      task: `This lesson we\'re going to learn some very important actions: copying files and moving them. Check what\'s in the current directory to get started!
+      task: `This lesson we\'re going to learn some very important actions: copying files and moving files.
+Use a command you have learned in a previous lesson to list what\'s in the current directory to get started!
 
 <small>Hint: Use <code>ls</code>.</small>`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls', true)
     },
     {
-      task: `What a mess. Let's move the homework1.txt to the Documents folder, to clean up a little.
+      task: `What a mess. Let's move the "homework1.txt" into the "Documents" folder, to clean up a little.
 
 Type <code>mv homework1.txt Documents/homework1.txt</code>`,
       emulator: emulator,
       checkSolved: utils.checkType('/home/user/Documents/homework1.txt', 'file')
     },
     {
-      task: `The move syntax is pretty simple, <code>mv <em>source destination</em></code>. But you can even move several files at once! Wow! Time to clean up the other homework files:
+      task: `The move syntax is pretty simple, <code>mv <em>source destination</em></code>.
+But you can even move several files at once! Time to clean up the other homework files:
 
 <code>mv homework2.txt homework3.txt Documents</code>`,
       emulator: emulator,
@@ -222,7 +224,7 @@ Type <code>mv homework1.txt Documents/homework1.txt</code>`,
       )
     },
     {
-      task: `Now, lets move on to copying. This won't be hard, it has almost the same format.
+      task: `Now, lets move on to copying. This won't be hard, it works almost the same way as moving.
 
 Copy the <code>dolly.sheep</code> file using <code>cp dolly.sheep clone.sheep</code>`,
       emulator: emulator,
@@ -231,7 +233,7 @@ Copy the <code>dolly.sheep</code> file using <code>cp dolly.sheep clone.sheep</c
     {
       task: `Copying files, like <code>mv</code> and many other commands, allow adressing multiple files at once!
 
-Copy Dolly and her clone to the Documents folder, for example with <code>cp dolly.sheep clone.sheep Documents</code>`,
+Copy Dolly and her clone to the "Documents" folder with <code>cp dolly.sheep clone.sheep Documents</code>`,
       emulator: emulator,
       checkSolved: utils.compose(
         utils.checkType('/home/user/dolly.sheep', 'file'),
@@ -243,7 +245,8 @@ Copy Dolly and her clone to the Documents folder, for example with <code>cp doll
     {
       task: `If you're not careful, you can overwrite files with <code>mv</code>, if the target file already exists.
 
-Try taking <code>a.txt</code> to overwrite <code>b.txt</code> by moving it in its place.`,
+Look at the files in the current directory.
+Then try moving <code>a.txt</code> to <code>b.txt</code>.`,
       emulator: emulator,
       checkSolved: utils.compose(
         utils.checkType('/home/user/a.txt', null),
@@ -251,7 +254,9 @@ Try taking <code>a.txt</code> to overwrite <code>b.txt</code> by moving it in it
       )
     },
     {
-      task: `Oops! You can always play it safe by using the <code>mv -n</code> switch, which does not overwrite existing files.
+      task: `Oops!
+If you type <code>ls</code> again you can see that "a.txt" is gone. With <code>cat b.txt</code> you can see that the content has changed!
+You can always play it safe by using the <code>mv -n</code> switch, which does not overwrite existing files.
 
 Try taking <code>b.txt</code> to overwrite <code>c.txt</code>, but this time, use the <code>-n</code> flag to keep your files safe.`,
       emulator: emulator,
@@ -262,19 +267,22 @@ Try taking <code>b.txt</code> to overwrite <code>c.txt</code>, but this time, us
       )
     },
     {
-      task: `Lastly, you can even copy a whole directory somewhere else by using <code>cp -r</code>.
+      task: `
+Good! This time no files have been changed.
 
-Rename your <code>Documents</code> folder into <code>MySheep</code>`,
+You can even copy a whole directory somewhere else by using <code>cp -r</code>.
+
+Use it to rename your <code>Documents</code> folder into <code>MySheeps</code>.`,
       emulator: emulator,
       checkSolved: utils.compose(
-        utils.checkType('/home/user/MySheep', 'dir'),
+        utils.checkType('/home/user/MySheeps', 'dir'),
         utils.checkType('/home/user/Documents', 'dir')
       )
     },
     {
-      task: `This concludes our second lesson. You should now be comforable navigating the file system, and copying and moving files around.
+      task: `This concludes our second lesson. You should now be comfortable navigating the file system, copying files and moving files around.
 
-Type <code>next</code> and you are done! Or look around a bit more, if you want.`,
+Type <code>next</code> and you are ready!`,
       emulator: emulator,
       checkSolved: utils.lastCommand('next')
     }
