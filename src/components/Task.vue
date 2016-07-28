@@ -1,4 +1,4 @@
-<style lang="stylus" scoped>
+<style lang="stylus">
   @import '../stylus/colors'
 
   .Task {
@@ -21,6 +21,20 @@
 
     &-text {
       white-space pre-wrap
+    }
+
+    small {
+      font-size 0.5em
+    }
+
+    code {
+      display inline-block
+      padding-left 3px
+      padding-right 3px
+      border-radius 2px
+      background-color rgba(#fff, 0.5)
+      font-size 1.2em
+      font-weight bold
     }
 
     &.is-active {
@@ -50,7 +64,7 @@
 <template>
   <div class="Task" transition="Task-" v-for="section in sections" v-show="$index > 0">
     <h3 class="Task-headline">Current Task</h3>
-    <div class="Task-text">{{section.task}}</div>
+    <div class="Task-text">{{{section.task}}}</div>
   </div>
 </template>
 
