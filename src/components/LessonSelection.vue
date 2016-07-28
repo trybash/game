@@ -25,6 +25,7 @@
       line-height 0.5rem
 
       z-index 1000
+      cursor pointer
     }
 
     &-footer {
