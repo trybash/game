@@ -135,6 +135,7 @@ import { sendCommand, toggleTurbo, activateLessonSelection } from '../vuex/actio
 import { emulator } from '../vuex/store'
 import { screenShake } from '../utils'
 
+const TAB = 9
 const ENTER = 13
 const UP = 38
 const DOWN = 40
@@ -221,6 +222,10 @@ module.exports = {
 
     keydown (e) {
       if (this.turbo) this.screenShake()
+
+      if (e.which === TAB) {
+        e.preventDefault()
+      }
 
       if (e.which === ENTER) {
         this.submit(e)
