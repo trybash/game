@@ -256,7 +256,7 @@ Try taking <code>a.txt</code> to overwrite <code>b.txt</code> by moving it in it
 Try taking <code>b.txt</code> to overwrite <code>c.txt</code>, but this time, use the <code>-n</code> flag to keep your files safe.`,
       emulator: emulator,
       checkSolved: utils.compose(
-        utils.lastCommand('mv -n', true),
+        utils.lastCommand('mv -n b.txt c.txt', false),
         utils.checkType('/home/user/b.txt', 'file'),
         utils.checkContent('/home/user/c.txt', 'C!')
       )
