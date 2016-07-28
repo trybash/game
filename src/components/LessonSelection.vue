@@ -7,6 +7,26 @@
   }
 
   .LessonSelection {
+    &-close {
+      display block
+      float right
+      width 1em
+      height 1em
+
+      border 0
+      background-color transparent
+      background-image url('../assets/close.svg')
+      background-repeat no-repeat
+      background-position center
+      background-size 50%
+
+      color grey
+      font-size 2em
+      line-height 0.5rem
+
+      z-index 1000
+    }
+
     &-footer {
       margin-left -1em
       margin-right -1em
@@ -48,7 +68,7 @@
 
 <template>
   <tb-modal :active="selectionActive">
-    <tb-button color="grey" @click="deactivateLessonSelection">Close</tb-button>
+    <button class="LessonSelection-close" @click="deactivateLessonSelection"></button>
     <h2>Choose a lesson</h2>
     <p>
       You can do the excercises in any order you want – although it'd probably be wise to do them in order, if you are new to the Bash.
