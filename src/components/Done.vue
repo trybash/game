@@ -50,7 +50,7 @@
           'Amazing!',
           'Incredible!',
           'Awesome!',
-          'Nice Job!',
+          'Nice Job!'
         ],
         praiseIndex: 0
       }
