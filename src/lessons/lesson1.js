@@ -65,7 +65,7 @@ Other popular switches are 't' and '1', one not to be mistaken for little l, sho
 
 Another niceity with the usage of switches is that you can use more than one at a time! For example, you can type: 'ls -aR' to view all the contents of the current working diretory and all it's subdirectories. The only limit, is some switches would be counter-productive, so in some cases, their usage may not be allowed with other switches. But, generally, you can use many switches, to however meet your needs.
 
-Ok, so we have a pretty good idea of how we can view content now, but how do move?`
+Ok, so we have a pretty good idea of how we can view content now, but how do we move?`
 
 const pwdExplained = `
 So now that we can navigate around, and list content of our directories, it's very easy to get lost. How do I find out where I am?
@@ -171,77 +171,75 @@ module.exports = {
     {
       task: `Before we can do anything useful within the command line, we have to get acclimated with moving around the file system.
 
-Type: ls`,
+Type <code>ls</code> to show files and folders.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
     },
     {
-      task: `Great! Throughout this tutorial, you'll find files named *_explained.txt which are more indepth/help files which are recommended for all new users, and can be skipped by those more experienced with the command line. To read them, we'll use another commonly used command.
+      task: `Throughout this tutorial, you'll find files named *_explained.txt which are help files that are recommended for all new users, and can be skipped by those more experienced with the command line.
 
-Type: cat ls_explained.txt`,
+Try using <code>cat ls_explained.txt</code> to read the one about the <code>ls</code> command.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('cat ls_explained.txt')
     },
     {
-      task: `We should have a basic understanding of what 'ls' does. Also, we have now tried 'cat,' which we will spend more time on later in this tutorial. We'll also be learning about "switches" or "flags" of commands. These appear as the command itself, followed by a hyphen one or more trailing letters.
+      task: `After reading that, you should have a basic understanding of what <code>ls</code>' does. Also, we have now tried <code>cat</code>, which we will spend more time on later in this tutorial. We'll also be learning about "switches" or "flags" of commands. These appear as the command itself, followed by a hyphen and one or more trailing letters.
 
-Type: ls -a`,
+Type <code>ls -a</code> to show even the hidden files!`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls -a')
     },
     {
-      task: `We will use various switches throughout the tutorial, and you'll see how useful they are to enhance the default behavior of commands. They are far deeper than we will cover, but you'll learn the basics.
+      task: `We will use various switches throughout the tutorial, and you'll see how useful they are to enhance the default behavior of commands. There are far more than we will cover, but you'll learn the basics.
 
-Type: ls -l`,
+Type <code>ls -l</code> to show a directory listing with additional information.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls -l')
     },
     {
-      task: `Ok, so we have listed items in our directory, but what if our files are somewhere else? No problem. We can just move to another one. As you have noticed by using the 'ls' command, it's easy to tell which items are files and which are directories.
+      task: `Ok, so we have listed items in our directory, but what if our files are somewhere else? No problem. We can just move there. As you have noticed, by using the <code>ls</code> command, it's easy to tell which items are files and which are directories.
 
-Type: cd Documents`,
+Type <code>cd Documents</code> to move to the Documents folder`,
       emulator: emulator,
       checkSolved: utils.lastCommand('cd Documents')
+      // TODO: Check if in Document Folder
     },
     {
-      task: `We are now in a new directory, or folder, named Documents. Let's list it's contents.
-
-Type: ls`,
+      task: 'We are now in a new directory, or folder, named Documents. List its contents with one of the commands you learned so far.',
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO: Last base command is ls, flags are okay
     },
     {
-      task: `Great! cd is used to move to any location, if you know the full path, you can just type it in. You can also simply move one step back.
-
-Type: cd ..`,
+      task: 'Great! <code>cd</code> is used to move to any location, if you know the full path, you can just type it in. You can also simply move one step back by using <code>cd ..</code>. Try it!',
       emulator: emulator,
       checkSolved: utils.lastCommand('cd ..')
     },
     {
       task: `Ok, now we're really making progress. We know how to list directories, and navigate around. Let's practice some more.
 
-Type: cd /home/user/Documents/Homework/`,
+Go to <code>/home/user/Documents/Homework/</code>`,
       emulator: emulator,
       checkSolved: utils.lastCommand('cd /home/user/Documents/Homework')
+      // TODO check if in directory
     },
     {
       task: `Now, lets move to another location.
 
-Type: cd /home/user/Desktop`,
+Go to <code>/home/user/Desktop</code>`,
       emulator: emulator,
       checkSolved: utils.lastCommand('cd /home/user/Desktop')
+      // TODO check if in directory
     },
     {
-      task: `All this moving around could make one's head spin. How do figure out where we are within the entire tree structure? Easy, we use the print working directory command.
-
-Type: pwd`,
+      task: 'All this moving around could make one\'s head spin. How do figure out where we are within the entire tree structure? Easy, we use the print working directory command: <code>pwd</code>.',
       emulator: emulator,
       checkSolved: utils.lastCommand('pwd')
     },
     {
-      task: `This concludes our first lesson. Make sure to read the filesystem_explained.txt (using cat) in the Documents folder, if you need help conceptualizing directory structures. We'll next learn about moving and copying items.
+      task: `This concludes our first lesson. Make sure to read the <code>filesystem_explained.txt</code> (using <code>cat</code>) in the Documents folder, if you need help conceptualizing directory structures. We'll learn about moving and copying items next.
 
-Type \`next\` and you are done!`,
+Type <code>next</code> when you are done! Or look around a bit more, if you want.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('next')
     }
