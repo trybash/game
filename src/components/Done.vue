@@ -12,7 +12,7 @@
   <tb-modal :active="active">
     <div class="Done">
       <div class="Done-text">{{praises[praiseIndex]}}</div>
-      <tb-button @click="restartSection" color="red">Restart Section</tb-button>
+      <!-- <tb-button @click="restartSection" color="red">Restart Section</tb-button> -->
       <tb-button @click="nextSection" v-el:next>Next Section →</tb-button>
     </div>
   </tb-modal>
