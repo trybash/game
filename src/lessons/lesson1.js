@@ -189,7 +189,7 @@ Type <code>ls</code> to show files and folders.`,
       checkSolved: utils.lastCommand('ls')
     },
     {
-      task: `Throughout this tutorial, you'll find files named *_explained.txt which are help files that are recommended for all new users, and can be skipped by those more experienced with the command line.
+      task: `Throughout this tutorial, you'll find files named ending with "_explained.txt" which are help files that are recommended for all new users, and can be skipped by those more experienced with the command line.
 
 Try using <code>cat ls_explained.txt</code> to read the one about the <code>ls</code> command.`,
       emulator: emulator,
@@ -204,7 +204,6 @@ Type <code>clear</code> to clear the console.`,
     },
     {
       task: `We have now, also, tried the <code>cat</code> command, which we will spend more time on later in this tutorial. We'll also be learning about "switches" or "flags" of commands. These appear as the command itself, followed by a hyphen and one or more trailing letters.
-
 
 Type <code>ls -a</code> to show even the hidden files!`,
       emulator: emulator,
@@ -222,8 +221,7 @@ Type <code>ls -l</code> to show a directory listing with additional information.
 
 Type <code>cd Documents</code> to move to the Documents folder`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('cd Documents')
-      // TODO: Check if in Document Folder
+      checkSolved: utils.workingDirectory('/home/user/Documents')
     },
     {
       task: 'We are now in a new directory, or folder, named Documents. List its contents with one of the commands you learned so far.',
@@ -231,7 +229,7 @@ Type <code>cd Documents</code> to move to the Documents folder`,
       checkSolved: utils.lastCommand('ls', true)
     },
     {
-      task: 'Great! <code>cd</code> is used to move to any location, if you know the full path, you can just type it in. You can also simply move one step back by using <code>cd ..</code>. Try it!',
+      task: 'Great! <code>cd</code> can be used to move to any location. If you know the full path, you can just type it in. You can also simply move one step back by using <code>cd ..</code>. Try it!',
       emulator: emulator,
       checkSolved: utils.lastCommand('cd ..')
     },
@@ -240,14 +238,14 @@ Type <code>cd Documents</code> to move to the Documents folder`,
 
 Go to <code>/home/user/Documents/Homework/</code>`,
       emulator: emulator,
-      checkSolved: utils.pwdIs('/home/user/Documents/Homework')
+      checkSolved: utils.workingDirectory('/home/user/Documents/Homework')
     },
     {
       task: `Now, lets move to another location.
 
 Go to <code>/home/user/Desktop</code>`,
       emulator: emulator,
-      checkSolved: utils.pwdIs('/home/user/Desktop')
+      checkSolved: utils.workingDirectory('/home/user/Desktop')
     },
     {
       task: 'All this moving around could make one\'s head spin. How do figure out where we are within the entire tree structure? Easy, we use the print working directory command: <code>pwd</code>.',
@@ -257,7 +255,7 @@ Go to <code>/home/user/Desktop</code>`,
     {
       task: `This concludes our first lesson. Make sure to read the <code>filesystem_explained.txt</code> (using <code>cat</code>) in the Documents folder, if you need help conceptualizing directory structures. We'll learn about moving and copying items next.
 
-Type <code>next</code> when you are ready to continue. Or, push the up-arrow on your keyboard to see your command history.`,
+Type <code>next</code> when you are done! Or look around a bit more, if you want.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('next')
     }
