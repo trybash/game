@@ -67,8 +67,7 @@ Another niceity with the usage of switches is that you can use more than one at 
 
 Ok, so we have a pretty good idea of how we can view content now, but how do move?`
 
-const pwdExplained = `
-So now that we can navigate around, and list content of our directories, it's very easy to get lost. How do I find out where I am?
+const pwdExplained = `So now that we can navigate around, and list content of our directories, it's very easy to get lost. How do I find out where I am?
 
 We can use the 'pwd' command, and it will show us the complete path to our current working directory. This is very useful for noting where we are when we work in a particular directory, and want to go there later. Or, simply if we lose track of where we are.
 
@@ -156,6 +155,41 @@ const emulator = {
       type: 'file',
       modified: Date.now(),
       content: 'hidden file is empty'
+    },
+    '/home/user/homework1.txt': {
+      type: 'file',
+      modified: Date.now(),
+      content: 'All work and no play'
+    },
+    '/home/user/homework2.txt': {
+      type: 'file',
+      modified: Date.now(),
+      content: 'Makes bash a dull boy'
+    },
+    '/home/user/homework3.txt': {
+      type: 'file',
+      modified: Date.now(),
+      content: 'Homework is literally the best'
+    },
+    '/home/user/dolly.sheep': {
+      type: 'file',
+      modified: Date.now(),
+      content: 'Baa Baa. Baa!'
+    },
+    '/home/user/a.txt': {
+      type: 'file',
+      modified: Date.now(),
+      content: 'A!'
+    },
+    '/home/user/b.txt': {
+      type: 'file',
+      modified: Date.now(),
+      content: 'I have a bad feeling about this.'
+    },
+    '/home/user/c.txt': {
+      type: 'file',
+      modified: Date.now(),
+      content: 'C!'
     }
   }
 }
@@ -164,72 +198,74 @@ module.exports = {
   title: 'Copying and Moving',
   sections: [
     {
-      task: `This lesson we're going to learn some very important actions: copying files and moving them. Let's see what we have in our directory.
+      task: `This lesson we\'re going to learn some very important actions: copying files and moving them. Check what\'s in the current directory to get started!
 
-type: ls`,
+<small>Hint: Use <code>ls</code>.</small>`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('ls', true)
     },
     {
-      task: `Ok, lets move the homework1.txt to the Documents folder.
+      task: `What a mess. Let's move the homework1.txt to the Documents folder, to clean up a little.
 
-type: mv homework1.txt Documents/homework1.txt`,
+Type <code>mv homework1.txt Documents/homework1.txt</code>`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO check file exists
     },
     {
-      task: `The move syntax is pretty simple, mv source destination. But, it is more powerful than that.
+      task: `The move syntax is pretty simple, <code>mv <em>source destination</em></code>. But you can even move several files at once! Wow! Time to clean up the other homework files:
 
-type: mv homework1.txt homework2.txt homework3.txt Documents`,
+<code>mv homework2.txt homework3.txt Documents</code>`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // Check files exist
     },
     {
-      task: `Very nifty! We can move multiple files at once into a new directory. That is a lot easier on the wrist than clicking-and-dragging. But, it gets even better.
+      task: `Now, lets move on to copying. This won't be hard, it has almost the same format.
 
-type: mv home*.txt Documents`,
+Copy the <code>dolly.sheep</code> file using <code>cp dolly.sheep clone.sheep</code>`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO check file exists
     },
     {
-      task: `Wow! We used the wildcard *, which basically matches everything after 'homework' and throws it into the Documents folder. Now, lets move on to copying. This won't be hard, it has the same format.
+      task: `Copying files, like many commands, allow adressing multiple files at once!
 
-type: cp origFile origFile2`,
+Copy Dolly and her clone to the Documents folder, for example with <code>cp dolly.sheep clone.sheep Documents</code>`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO check both files exist
     },
     {
-      task: `Copying files, like many commands, can also take wildcard *, and allow for copying of multiple files at once!
+      task: `If you're not careful, you can overwrite files with <code>mv</code>, if the target file already exists.
 
-type: cp file1 file2 file3 file4 Documents`,
+Try overwriting <code>b.txt</code> by moving <code>a.txt</code> in its place.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO check identical content
     },
     {
-      task: `Copying and moving files can sometimes be dangerous. We don't want to overwrite something accidentally. So far, the cp and mv examples have not protected us from this occurring. There are two ways we can handle this. First, we'll learn the interactive way, by using the -i switch. If there is a match, we will be warned.
+      task: `Oops! You can always play it safe by using the <code>mv -n</code> switch, which does not overwrite existing files.
 
-type: cp -i file1 Documents`,
+Try overwriting <code>c.txt</code> with <code>b.txt</code>, but use the <code>-n</code> flag to keep your files safe.`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO check content
     },
     {
-      task: `Now, we'll use another switch, the -n switch, which does not overwrite existing files.
+      task: `Lastly, you can copy the contents of a whole directory into another directory by using the <code>mv -R</code> switch.
 
-type: mv -n file1 Documents/file1`,
+Create a backup of your <code>Documents</code> into <code>BackedUpDocs</code>`,
       emulator: emulator,
       checkSolved: utils.lastCommand('ls')
+      // TODO check folder exists
     },
     {
-      task: `Lastly, you can copy/move the contents of one directory into another directory simply by using the -R switch. Try it!
+      task: `This concludes our second lesson. You should now be comforable navigating the file system, and copying and moving files around.
 
-type: cp -R Documents BackedUpDocs`,
+Type <code>next</code> and you are done! Or look around a bit more, if you want.`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-    },
-    {
-      task: 'This concludes our second lesson. You should now be comforable navigating the file system, and copying and moving files around.',
-      emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
+      checkSolved: utils.lastCommand('next')
     }
   ]
 }

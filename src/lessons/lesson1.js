@@ -207,8 +207,7 @@ Type <code>cd Documents</code> to move to the Documents folder`,
     {
       task: 'We are now in a new directory, or folder, named Documents. List its contents with one of the commands you learned so far.',
       emulator: emulator,
-      checkSolved: utils.lastCommand('ls')
-      // TODO: Last base command is ls, flags are okay
+      checkSolved: utils.lastCommand('ls', true)
     },
     {
       task: 'Great! <code>cd</code> is used to move to any location, if you know the full path, you can just type it in. You can also simply move one step back by using <code>cd ..</code>. Try it!',
@@ -220,16 +219,14 @@ Type <code>cd Documents</code> to move to the Documents folder`,
 
 Go to <code>/home/user/Documents/Homework/</code>`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('cd /home/user/Documents/Homework')
-      // TODO check if in directory
+      checkSolved: utils.pwdIs('/home/user/Documents/Homework')
     },
     {
       task: `Now, lets move to another location.
 
 Go to <code>/home/user/Desktop</code>`,
       emulator: emulator,
-      checkSolved: utils.lastCommand('cd /home/user/Desktop')
-      // TODO check if in directory
+      checkSolved: utils.pwdIs('/home/user/Desktop')
     },
     {
       task: 'All this moving around could make one\'s head spin. How do figure out where we are within the entire tree structure? Easy, we use the print working directory command: <code>pwd</code>.',

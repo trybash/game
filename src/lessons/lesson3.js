@@ -210,7 +210,7 @@ module.exports = {
   title: 'Creating and Removing of Files and Directories',
   sections: [
     {
-      task: `We've learned how to use various commands so far: <code>ls</code>, <code>pwd</code>, <code>cd</code>, <code>cp</code>, <code>mv</code> - to name a few.
+      task: `We've learned how to use various commands so far – <code>ls</code> <code>pwd</code> <code>cd</code> <code>cp</code> <code>mv</code> – to name a few.
 Now, lets learn how to create directories.
 
 To create your first folder try typing <code>mkdir testFolder</code>.`,

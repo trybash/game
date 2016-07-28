@@ -87,6 +87,13 @@ describe('Terminal.vue', () => {
       expect(screenShake.calledOnce).to.be.false
     })
 
+    it('should preventDefault if pressing tab', () => {
+      const TAB = 9
+      const preventDefault = sinon.spy()
+      Terminal.methods.keydown.call({}, {which: TAB, preventDefault})
+      expect(preventDefault.calledOnce).to.be.true
+    })
+
     it('should submit if pressing enter', () => {
       const ENTER = 13
       const submit = sinon.spy()
