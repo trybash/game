@@ -47,7 +47,10 @@
           'Done!',
           'Nice Work!',
           'Wow!',
-          'Amazing!'
+          'Amazing!',
+          'Incredible!',
+          'Awesome!',
+          'Nice Job!',
         ],
         praiseIndex: 0
       }
