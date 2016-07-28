@@ -25,6 +25,9 @@ Just make sure the tests are passing (`npm test`) and send a [Pull Request](http
 
 ## Setup
 
+Make sure you have [node.js](https://nodejs.org/) installed.
+Then:
+
 ``` bash
 # install dependencies
 npm install
