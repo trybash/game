@@ -218,7 +218,7 @@ To create your first folder try typing <code>mkdir testFolder</code>.`,
       checkSolved: utils.checkType('/home/user/testFolder', 'dir')
     },
     {
-      task: 'Use a command you learned in a previous lesson to move into the <code>testFolder</code> directory, and we continue there.',
+      task: 'Use a command you learned in a previous lesson to change into the <code>testFolder</code> directory, and we continue there.',
       emulator: emulator,
       checkSolved: utils.workingDirectory('/home/user/testFolder')
     },
@@ -236,7 +236,7 @@ Create a file called <code>test1.txt</code> in <code>testFolder</code> by typing
 
 We can delete it with the <code>rm <em>filename</em></code> command.
 
-Try removing the file!`,
+Try removing the <code>test1.txt</code> file!`,
       emulator: emulator,
       checkSolved: utils.checkType('/home/user/testFolder/test1.txt', null)
     },
