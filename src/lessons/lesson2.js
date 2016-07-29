@@ -272,7 +272,7 @@ Good! This time no files have been changed.
 
 You can even copy a whole directory somewhere else by using <code>cp -r</code>.
 
-Use it to rename your <code>Documents</code> folder into <code>MySheeps</code>.`,
+Use it to copy your <code>Documents</code> folder and all its contents into the <code>MySheeps</code> folder.`,
       emulator: emulator,
       checkSolved: utils.compose(
         utils.checkType('/home/user/MySheeps', 'dir'),
