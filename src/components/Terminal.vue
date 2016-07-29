@@ -35,6 +35,7 @@
   &-buttons {
     display flex
     padding-top 1em
+    min-height 58px
   }
 
   &-floppy {

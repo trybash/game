@@ -6,6 +6,7 @@
   display inline-block
 
   padding 0.66em
+  padding-bottom 0.5em
 
   border 0
   border-radius 3px
