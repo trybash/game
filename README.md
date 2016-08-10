@@ -56,6 +56,10 @@ npm run lint
 scripts/deploy.sh
 ```
 
+For the `bash-emulator` we use the latest version directly from [Github](https://github.com/trybash/bash-emulator).
+To update the version in the *game* repository, run `npm install bash-emulator` again.
+
+
 
 ## LICENSE
 
