@@ -48,7 +48,7 @@ body {
 .Header {
   display flex
   flex-direction row
-  height 73px
+  height 105px
 
   margin-bottom 5em
 

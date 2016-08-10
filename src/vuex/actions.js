@@ -7,7 +7,9 @@ export function reset ({dispatch}) {
 }
 
 export function restartSection ({dispatch, state}) {
-  dispatch('START_SECTION', state.currentLesson, state.currentSection)
+  dispatch('RESET')
+  // dispatch('START_SECTION', state.currentLesson, state.currentSection)
+  // dispatch('ACTIVATE_LESSON_SELECTION')
 }
 
 export function nextSection ({dispatch, state}) {
