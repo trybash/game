@@ -84,37 +84,34 @@ describe('utils', () => {
   })
 
   describe('screenShake', () => {
-    it('should add the "shake" class', () => {
-      document.body.innerHTML = '<html><body><h1>Hello World</h1></body></html>'
+    it('adds the "shake" class', () => {
+      document.body.innerHTML = '<div id="terminal"><h1>Hello World</h1></div>'
       utils.screenShake()
-      expect(document.body.classList.contains('shake')).to.be.true
+      expect(document.getElementById('terminal').classList.contains('shake')).to.be.true
     })
 
-    it('should remove the "shake" class after the timeout', (done) => {
-      document.body.innerHTML = '<html><body><h1>Hello World</h1></body></html>'
+    it('removes the "shake" class after the timeout', (done) => {
+      document.body.innerHTML = '<div id="terminal"><h1>Hello World</h1></div>'
       utils.screenShake(50)
       setTimeout(function () {
-        expect(document.body.classList.contains('shake')).to.be.false
+        expect(document.getElementById('terminal').classList.contains('shake')).to.be.false
         done()
       }, 50)
     })
 
-    it('should add a transform between -10 and 10 on x and y axis', () => {
-      document.body.innerHTML = '<html><body><h1>Hello World</h1></body></html>'
+    it('adds a transform', () => {
+      document.body.innerHTML = '<div id="terminal"><h1>Hello World</h1></div>'
       utils.screenShake()
 
-      const regex = /translate\((.*)px, (.*)px\)/g
-      const [, x, y] = regex.exec(document.body.style.transform)
-
-      expect(Number(x)).to.be.within(-10, 10)
-      expect(Number(y)).to.be.within(-10, 10)
+      expect(document.getElementById('terminal').style.transform).to.include('translate')
+      expect(document.getElementById('terminal').style.transform).to.include('rotate')
     })
 
-    it('should remove the transform after the timeout', (done) => {
-      document.body.innerHTML = '<html><body><h1>Hello World</h1></body></html>'
+    it('removes the transform after the timeout', (done) => {
+      document.body.innerHTML = '<div id="terminal"><h1>Hello World</h1></div>'
       utils.screenShake(50)
       setTimeout(function () {
-        expect(document.body.style.transform).to.equal('')
+        expect(document.getElementById('terminal').style.transform).to.equal('')
         done()
       }, 50)
     })

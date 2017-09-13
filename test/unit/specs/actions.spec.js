@@ -14,8 +14,8 @@ describe('actions', () => {
     it('should dispatch reset', () => {
       const dispatch = sinon.spy()
       actions.reset({ dispatch })
-      expect(dispatch.calledOnce).to.be.true
       expect(dispatch.calledWith('RESET')).to.be.true
+      expect(dispatch.calledWith('START_SECTION', 0, 0)).to.be.true
     })
   })
 
