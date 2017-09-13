@@ -99,7 +99,7 @@
 
 
 <template>
-  <div class="Terminal" @click="focusInput">
+  <div class="Terminal" id="terminal" @click="focusInput">
     <div class="Terminal-front">
       <div class="Terminal-screen" v-el:terminal>
         <div class="History">

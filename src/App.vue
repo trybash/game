@@ -21,10 +21,11 @@ body {
     transform rotate(360deg)
   }
 
-  &.shake {
-    transition-property transform
-    transition-duration 0.05s
-  }
+}
+
+.shake {
+  transition-property transform
+  transition-duration 0.01s
 }
 
 .u-spacer {

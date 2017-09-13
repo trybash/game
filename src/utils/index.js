@@ -46,14 +46,16 @@ module.exports = {
   },
 
   screenShake (delay = 50) {
-    document.body.classList.add('shake')
-    const x = _.random(-10, 10)
-    const y = _.random(-10, 10)
-    document.body.style.transform = `translate(${x}px, ${y}px)`
+    const terminal = document.getElementById('terminal')
+    terminal.classList.add('shake')
+    const x = _.random(-1.5, 1.5)
+    const y = _.random(-1.5, 1.5)
+    const r = _.random(-2.5, 2.5)
+    terminal.style.transform = `translate(${x}%, ${y}%) rotate(${r}deg)`
 
     setTimeout(function () {
-      document.body.classList.remove('shake')
-      document.body.style.transform = ''
+      terminal.classList.remove('shake')
+      terminal.style.transform = ''
     }, delay)
   }
 }
