@@ -84,6 +84,9 @@ export const mutations = {
     _.forIn(_.cloneDeep(initialState), (value, key) => {
       state[key] = value
     })
+
+    emulator.state = state.emulator
+
     saveLocalStorage(state)
   },
 

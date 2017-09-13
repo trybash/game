@@ -31,6 +31,7 @@ module.exports = {
         return
       }
       store.dispatch('RESET')
+      store.dispatch('START_LESSON', 0, 0)
       env.exit()
     }
   },

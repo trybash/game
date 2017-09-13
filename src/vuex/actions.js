@@ -4,6 +4,7 @@ export function sendCommand ({dispatch}, command) {
 
 export function reset ({dispatch}) {
   dispatch('RESET')
+  dispatch('START_SECTION', 0, 0)
 }
 
 export function restartSection ({dispatch, state}) {
